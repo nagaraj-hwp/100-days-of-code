@@ -25,11 +25,11 @@
 # print("\n")
 
 # ####################################################################
-# #understanding input method 
+# # understanding input method
 # input("What is your name: ")
 # print("above is a example for a input prompt")
 
-# print("Hello " + input("what is your name: ")+ ", How are you?")
+# print("Hello " + input("what is your name: ") + ", How are you?")
 
 # print("\n")
 
@@ -41,17 +41,17 @@
 # print(length)
 
 
-#1. Create a greeting for your program.
+# 1. Create a greeting for your program.
 print("HI Coder, Welcome to the band name generator.")
-#2. Ask the user for the city that they grew up in.
+# 2. Ask the user for the city that they grew up in.
 city_name = input("Enter the name of the city where you born:\n")
-#3. Ask the user for the name of a pet.
+# 3. Ask the user for the name of a pet.
 pet_name = input("Enter the name of your pet:\n")
-#4. Combine the name of their city and pet and show them their band name.
+# 4. Combine the name of their city and pet and show them their band name.
 print()
 band_name = city_name + " " + pet_name
 print(band_name + "\n")
-#5. Make sure the input cursor shows on a new line:
+# 5. Make sure the input cursor shows on a new line:
 
 
 # Solution: https://replit.com/@appbrewery/band-name-generator-end
