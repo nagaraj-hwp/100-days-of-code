@@ -1,0 +1,2 @@
+# understanding randomisation
+import random
