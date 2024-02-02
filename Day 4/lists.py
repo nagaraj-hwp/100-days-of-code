@@ -10,10 +10,10 @@ states_of_america = ["Delaware", "Pennsylvania", "New Jersey", "Georgia", "Conne
                      "Missouri", "Arkansas", "Michigan", "Florida", "Texas", "Iowa", "Wisconsin", "California", "Minnesota", "Oregon", "Kansas", "West Virginia", "Nevada", "Nebraska", "Colorado", "North Dakota", "South Dakota", "Montana", "Washington", "Idaho", "Wyoming", "Utah", "Oklahoma", "New Mexico", "Arizona", "Alaska", "Hawaii"]
 
 
-print(states_of_america[0])
+# print(states_of_america[0])
 
 # negative indexing
-print(states_of_america[-1])
+# print(states_of_america[-1])
 
 # modify any element of the list with the index
 # states_of_america[1] = "Nagaland"
@@ -29,9 +29,21 @@ print(states_of_america[-1])
 # states_of_america.extend(["Nagaland", "Manland"])
 # print(states_of_america)
 
-print(len(states_of_america))
+# print(len(states_of_america))
 
-states_of_america.insert(0, "Nagaland")
-print(len(states_of_america))
+# states_of_america.insert(0, "Nagaland")
+# print(len(states_of_america))
 
 # more list methods
+fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
+print(fruits.count('apple'))
+print(fruits.count('tangerine'))
+print(fruits.index('banana'))
+print(fruits.index('banana', 4))  # Find next banana starting at position 4
+print(fruits.reverse())
+print(fruits)
+print(fruits.append('grape'))
+print(fruits)
+print(fruits.sort())
+print(fruits)
+print(fruits.pop())
