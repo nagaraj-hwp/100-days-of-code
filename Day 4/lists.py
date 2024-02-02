@@ -47,3 +47,9 @@ print(fruits)
 print(fruits.sort())
 print(fruits)
 print(fruits.pop())
+
+# nested lists
+veg_foods = ["greens", "carrot", "milk", "fruits"]
+non_veg_foods = ["chicken", "mutton", "steaks", "pork"]
+
+combined_foods = [veg_foods, non_veg_foods]
