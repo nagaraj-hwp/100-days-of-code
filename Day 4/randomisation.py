@@ -13,8 +13,6 @@ random_float = random.random() * 5
 print(random_float)
 
 
-
-
 # Accessing the other modules
 # print(my_module.a)
 # print(my_module.b)
@@ -30,3 +28,14 @@ if head_or_tail == 1:
 else:
     print("Tails")
 
+# Pick bill payer randomly
+
+# import random
+names_string = "Angela, Ben, Jenny, Michael, Chloe"
+names = names_string.split(", ")
+# The code above converts the input into an array seperating
+# each name in the input by a comma and space.
+# 🚨 Don't change the code above 👆
+
+bill_payer = random.randint(0, len(names)-1)
+print(f"{names[bill_payer]} is going to buy the meal today!")
