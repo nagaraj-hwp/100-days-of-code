@@ -9,3 +9,9 @@ def my_function():
     print("Hello, This is inside my function.")
 
 my_function()
+
+# indentation in python
+# def my_function():
+# ••••print("Hello, This is inside my function.")
+
+# my_function()
