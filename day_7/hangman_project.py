@@ -6,11 +6,7 @@
 # lists, etc
 # random module
 
-# Step 1
-
 import random
-# import hangman_Art
-# import hangman_words
 from hangman_Art import logo, stages
 from hangman_words import word_list
 
@@ -21,13 +17,12 @@ display = ["_" for i in range(word_length)]
 
 end_of_game = False
 lives = 6
-guess_list = []
 
 while not end_of_game:
     guessed_letter = input("Guess a letter: ").lower()
-    if guessed_letter in guess_list:
-        guess_list.append(guessed_letter)
-        print("You already guessed this letter!\n")
+    if guessed_letter in display:
+        print(
+            f"You guessed letter {guessed_letter}, You already guessed this letter! you lost a life.\n")
         continue
     correct_guess = False
     for i in range(0, word_length):
@@ -35,11 +30,12 @@ while not end_of_game:
             display[i] = guessed_letter
             correct_guess = True
     if not correct_guess:
-        print("Wrong Guess, letter not in the word! you lost a life.")
+        print(
+            "You guessed letter {guessed_letter}, letter not in the word! you lost a life.")
         lives -= 1
         if lives == 0:
             end_of_game = True
-            print("You lost.")
+            print(f"You lost! \nThe chosen word was {chosen_word}.")
     print(f"{' '.join(display)}")
 
     if "_" not in display:
