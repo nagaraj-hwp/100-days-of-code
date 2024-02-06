@@ -8,7 +8,9 @@
 # while 1:
 #     print("This is a infinite loop")
 
-num = 5
-while num:
-    print(num)
-    num -= 1
+# num = 5
+# while num:
+#     print(num)
+#     num -= 1
+
+
