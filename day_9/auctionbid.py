@@ -2,37 +2,32 @@
 from art import logo
 from os import system
 print(logo)
-print("Welcome to the bling auction!, bid more to win the auction :p")
-auction_list = []
-auction_continue = True
+print("Welcome to the blind auction!, bid more to win the auction :p")
+auction_completed = False
+bids = {}
 
-while auction_continue:
-    auction_member = {}
 
+def find_highest_bidder(bidding_record):
+    max_bid = 0
+    max_bidder = ""
+    for bidder in bidding_record:
+        if bidding_record[bidder] > max_bid:
+            max_bid = bidding_record[bidder]
+            max_bidder = bidder
+    print(
+        f"Today's auction winner is {max_bidder} with maximum bid of ${max_bid}")
+
+
+while not auction_completed:
     bidder_name = input("Enter your name: \n")
-    bidder_amount = int(input(f"Hi {bidder_name}, How much you wanna bet? $\n"))
+    bidder_amount = int(
+        input(f"Hi {bidder_name}, How much you wanna bet? $\n"))
+    bids[bidder_name] = bidder_amount
     more_bidders = input(
         "Is there any more bidders available to bet? 'Yes' or 'No' \n").lower()
 
-    auction_member["name"] = bidder_name
-    auction_member["amount"] = bidder_amount
-    auction_list.append(auction_member)
-
-    if more_bidders == "yes":
-        system('cls')
-        continue
+    if more_bidders == "no":
+        auction_completed = True
+        find_highest_bidder(bidding_record=bids)
     else:
-        auction_continue = False
-
-
-max_bid = 0
-max_bidder = ""
-# print(auction_list)
-for item in auction_list:
-    # print(item)
-    if item["amount"] > max_bid:
-        max_bid = item["amount"]
-        max_bidder = item["name"]
-
-print(
-    f"Today the auction winner is {max_bidder} with maximum bid of ${max_bid}")
+        system('cls')
