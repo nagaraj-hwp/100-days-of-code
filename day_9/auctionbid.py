@@ -27,9 +27,9 @@ while auction_continue:
 
 max_bid = 0
 max_bidder = ""
-print(auction_list)
+# print(auction_list)
 for item in auction_list:
-    print(item)
+    # print(item)
     if item["amount"] > max_bid:
         max_bid = item["amount"]
         max_bidder = item["name"]
