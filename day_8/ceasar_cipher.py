@@ -19,8 +19,8 @@ def caesar(start_text, shift_amount, cipher_direction):
     print(f"The {cipher_direction}d result is '{end_text}'\n")
 
 
-go_again = True
-while go_again:
+should_continue = True
+while should_continue:
     direction = input(
         "Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
     text = input("Type your message:\n").lower()
@@ -34,4 +34,4 @@ while go_again:
         continue
     else:
         print("Bye, Take care\n")
-        go_again = False
+        should_continue = False
