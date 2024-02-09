@@ -20,8 +20,10 @@
 # Block Scope
 # in python unlike c, c++, Java there is nothing called block scope
 # eg:
-fill = "Red"
-if fill == "Red":
-    color = "Blue"
+# fill = "Red"
+# if fill == "Red":
+#     color = "Blue"
 
-print(color) # Variable insode if block works outside as well.
+# print(color) # Variable insode if block works outside as well.
+
+# ---------------------------------------------------------------------------
