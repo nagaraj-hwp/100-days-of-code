@@ -1,4 +1,4 @@
-from art import logo, winner
+from art import logo, win
 import random
 from os import system
 
@@ -23,7 +23,7 @@ def guess_number(attempts, number):
         elif predict < number:
             print("Too Low.\nGuess Again.")
         else:
-            print(winner)
+            print(win)
             print(f"You guessed it right!!!, the number is {number}.\n")
             return
         attempts -= 1
