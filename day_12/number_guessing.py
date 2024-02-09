@@ -10,6 +10,7 @@ def choose_diffculty():
         attempts = 5
     else:
         attempts = 10
+    print("You will be having {attempts} to guess the number.\n")
     return attempts
 
 
