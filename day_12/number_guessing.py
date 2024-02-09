@@ -44,6 +44,8 @@ def play_game():
             "Play another game? Type 'y' for Yes or 'n' for No.\n").lower()
         if another_game != "y":
             game_done = True
+        else:
+            print("Good luck for your daily chores!!\n")
 
 
 play_game()
