@@ -31,8 +31,8 @@ def guess_number(attempts, number):
 
 
 def play_game():
-    game_over = False
-    while not game_over:
+    game_done = False
+    while not game_done:
         system('cls')
         print(logo)
         print("Welcome to the number guessing game! Be Sharp.\n")
@@ -43,7 +43,7 @@ def play_game():
         another_game = input(
             "Play another game? Type 'y' for Yes or 'n' for No.\n").lower()
         if another_game != "y":
-            game_over = True
+            game_done = True
 
 
 play_game()
