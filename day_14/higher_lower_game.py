@@ -38,6 +38,8 @@ while not game_over:
             repetition.append(opponent)
             check = False
     # print(f"\nPrinting repetion here , {repetition}\n")
+    # system('cls')
+    # print(logo)
     print("*******************************************************************************************")
     print(
         f"Compare A: {defend['name']}, a {defend['description']}, from {defend['country']}")
@@ -51,7 +53,8 @@ while not game_over:
     user_choice = input(
         "Enter Who has more follower count Type either 'A' or 'B'\n").lower()
     # print(user_choice)
-
+    system('cls')
+    print(logo)
     if user_choice != 'a' and user_choice != 'b':
         print(
             "You predicted something from out of syllabus! Haha\nRestart your game ;[")
@@ -68,10 +71,9 @@ while not game_over:
         print(
             f"You guessed right, {defend['name']} has {defend['follower_count']} million followers and {opponent['name']} and {opponent['follower_count']} million followers!")
         user_points += 1
-        print(".................................................................................")
+        print("........................................")
         print(f"You scored {user_points} points, keep going!")
-        print(".................................................................................\n")
-
+        print("........................................\n")
         defend = opponent
     else:
         print(
