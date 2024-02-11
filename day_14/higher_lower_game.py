@@ -12,21 +12,20 @@ system('cls')
 print(logo)
 print("Welcome to higher lower!\nLet's examine your intelligence and prediction skills together !!!")
 defend = random.choice(data)
-print(defend)
+# print(defend)
 repetition.append(defend)
 
 
-
-def pick_data():
-    defend = random.choice(data)
-    print(defend)
-    repetition.append(defend)
-    opponent = random.choice(data)
-    print(opponent)
-    while opponent != defend and opponent not in repetition:
-        repetition.append(opponent)
-        break
-    return defend, opponent
+# def pick_data():
+#     defend = random.choice(data)
+#     print(defend)
+#     repetition.append(defend)
+#     opponent = random.choice(data)
+#     print(opponent)
+#     while opponent != defend and opponent not in repetition:
+#         repetition.append(opponent)
+#         break
+#     return defend, opponent
 
 
 while not game_over:
@@ -34,11 +33,11 @@ while not game_over:
     check = True
     while check:
         opponent = random.choice(data)
-        print(opponent)
+        # print(opponent)
         if opponent not in repetition:
             repetition.append(opponent)
             check = False
-    print(f"\nPrinting repetion here , {repetition}\n")
+    # print(f"\nPrinting repetion here , {repetition}\n")
     print("*******************************************************************************************")
     print(
         f"Compare A: {defend['name']}, a {defend['description']}, from {defend['country']}")
@@ -51,7 +50,7 @@ while not game_over:
 
     user_choice = input(
         "Enter Who has more follower count Type either 'A' or 'B'\n").lower()
-    print(user_choice)
+    # print(user_choice)
 
     if user_choice != 'a' and user_choice != 'b':
         print(
