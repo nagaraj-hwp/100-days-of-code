@@ -253,7 +253,7 @@ data = [
     },
     {
         'name': 'Virat Kohli',
-        'follower_count': 55,
+        'follower_count': 266,
         'description': 'Cricketer',
         'country': 'India'
     },
