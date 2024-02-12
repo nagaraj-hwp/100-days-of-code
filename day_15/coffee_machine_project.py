@@ -73,7 +73,7 @@ def check_transactions(drink, total_pennies):
         make_drink(drink)
 
 
-# TODO: 3. Process the coins inserted
+# TODO: 3. Process the coins inserted by user
 def insert_coins():
     penny = int(input("How many pennies? "))
     nickel = int(input("How many nickels? "))
