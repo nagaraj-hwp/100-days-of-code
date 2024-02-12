@@ -4,7 +4,7 @@ from art import broken, logo, coffee_art
 WATER_LEVEL = 700
 MILK_LEVEL = 400
 COFFEE_LEVEL = 200
-# AMOUNT = 0
+
 
 water_used = 0
 milk_used = 0
@@ -25,9 +25,6 @@ def is_resource_available(drink):
     water = WATER_LEVEL - water_used
     milk = MILK_LEVEL - milk_used
     coffee = COFFEE_LEVEL - coffee_used
-    # print(water)
-    # print(milk)
-    # print(coffee)
     if drink == "expresso" and milk < 50 or coffee < 18:
         print(f"Can't have a espresso!, not enough resource, {broken}")
     elif drink == "latte" and water < 200 or milk < 150 or coffee < 24:
