@@ -62,14 +62,14 @@ while not game_over:
     if (user_choice == 'a' and defend['follower_count'] > opponent['follower_count']):
         print(".................................................................................")
         print(
-            f"You guessed right, {defend['name']} has {defend['follower_count']} million followers and  {opponent['name']} and {opponent['follower_count']} million followers!")
+            f"You guessed right, {defend['name']} has {defend['follower_count']} million followers and  {opponent['name']} has {opponent['follower_count']} million followers!")
         user_points += 1
         print(f"You scored {user_points} points, keep going")
         print(".................................................................................\n")
 
     elif (user_choice == 'b' and defend['follower_count'] < opponent['follower_count']):
         print(
-            f"You guessed right, {defend['name']} has {defend['follower_count']} million followers and {opponent['name']} and {opponent['follower_count']} million followers!")
+            f"You guessed right, {defend['name']} has {defend['follower_count']} million followers and {opponent['name']} has {opponent['follower_count']} million followers!")
         user_points += 1
         print("........................................")
         print(f"You scored {user_points} points, keep going!")
@@ -77,7 +77,7 @@ while not game_over:
         defend = opponent
     else:
         print(
-            f"You guessed wrong, {defend['name']} has {defend['follower_count']} million followers and {opponent['name']} and {opponent['follower_count']} million followers!")
+            f"You guessed wrong, {defend['name']} has {defend['follower_count']} million followers and {opponent['name']} has {opponent['follower_count']} million followers!")
         print("\n\n\n---------------------------------------------------")
         print(
             f"| You scored {user_points} points in this higher lower game! |")
