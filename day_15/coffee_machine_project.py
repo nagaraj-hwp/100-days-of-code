@@ -26,11 +26,11 @@ def is_resource_available(drink):
     milk = MILK_LEVEL - milk_used
     coffee = COFFEE_LEVEL - coffee_used
     if drink == "expresso" and milk < 50 or coffee < 18:
-        print(f"Can't have a espresso!, not enough resource, {broken}")
+        print(f"Can't have a espresso!, not enough resource {broken}")
     elif drink == "latte" and water < 200 or milk < 150 or coffee < 24:
-        print(f"Can't have a latte!, not enough resource,{broken}")
+        print(f"Can't have a latte!, not enough resource {broken}")
     elif drink == "cappuccino" and water < 250 or milk < 100 or coffee < 24:
-        print(f"Can't have a cappuccino!, not enough resource, {broken}")
+        print(f"Can't have a cappuccino!, not enough resource {broken}")
     else:
         return True
     return False
