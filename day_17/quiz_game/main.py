@@ -11,8 +11,6 @@ for question in another_question_data:
     question_bank.append(new_question)
 
 quiz = QuizBrain(question_bank)
-
-
 while quiz.still_have_questions():
     quiz.next_question()
 
