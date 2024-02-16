@@ -9,7 +9,9 @@
 import random
 from hangman_Art import logo, stages
 from hangman_words import word_list
+from os import system
 
+system('cls')
 print(logo)
 chosen_word = random.choice(word_list).lower()
 word_length = len(chosen_word)
@@ -31,7 +33,7 @@ while not end_of_game:
             correct_guess = True
     if not correct_guess:
         print(
-            "You guessed letter {guessed_letter}, letter not in the word! you lost a life.")
+            f"You guessed letter {guessed_letter}, letter not in the word! you lost a life.")
         lives -= 1
         if lives == 0:
             end_of_game = True
