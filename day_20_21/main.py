@@ -5,6 +5,9 @@ from food import Food
 from scoreboard import Scoreboard
 import time
 
+DIFFICULTY = 'e'
+WALL = 'y'
+
 screen = Screen()
 screen.bgcolor("black")
 screen.setup(width=600, height=600)
