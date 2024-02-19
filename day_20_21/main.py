@@ -5,6 +5,7 @@ from food import Food
 from scoreboard import Scoreboard
 import time
 
+# Ideas for enhancement
 DIFFICULTY = 'e'
 WALL = 'y'
 
