@@ -17,11 +17,11 @@ class Fish(Animal):
         print("Moving in water! Yay")
 
     def breathe(self):
-        super().__init__()
-        print("Breathe_under_water")
+        super().breathe()
+        print("Breathes_under_water")
 
 
 nemo = Fish()
-nemo.swim()
-print(nemo.num_of_eyes)
+# nemo.swim()
+# print(nemo.num_of_eyes)
 nemo.breathe()
