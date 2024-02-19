@@ -8,6 +8,8 @@ import time
 # Ideas for enhancement
 DIFFICULTY = 'e'
 WALL = 'y'
+screen_size = 'm'
+
 
 screen = Screen()
 screen.bgcolor("black")
