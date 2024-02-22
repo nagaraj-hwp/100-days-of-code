@@ -13,7 +13,7 @@ screen.setup(width=800, height=600)
 screen.title("Pong Game 🏓")
 screen.tracer(0)
 
-# Enhancement code
+# Enhancement code for easy hard level adjustment
 # difficulty = turtle.textinput(title="Game Difficulty", prompt="Easy or hard").lower()
 # paddle_color = turtle.textinput(title="Paddle color (Choose lighter one)", prompt="Enter preferred color").lower()
 #
