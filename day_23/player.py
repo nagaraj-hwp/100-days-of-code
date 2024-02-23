@@ -21,4 +21,3 @@ class Player(Turtle):
         if current_y < 280:
             new_y = current_y + 20
             self.setposition(self.xcor(), new_y)
-
