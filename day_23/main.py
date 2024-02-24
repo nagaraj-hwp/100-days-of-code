@@ -12,6 +12,7 @@ screen.tracer(0)
 
 tim = Player()
 car = CarManager()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(key="Up", fun=tim.move)
@@ -21,3 +22,6 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
+
+# Just a small comment added
+
