@@ -7,12 +7,12 @@ from scoreboard import Scoreboard
 
 screen = Screen()
 screen.setup(width=600, height=600)
-screen.bgcolor("black")
+screen.bgcolor("white")
 screen.tracer(0)
 
 tim = Player()
 car_manager = CarManager()
-scoreboard = Scoreboard()
+# scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(key="Up", fun=tim.move)
@@ -24,6 +24,7 @@ while game_is_on:
     screen.update()
 
     car_manager.create_cars()
+    car_manager.move_cars()
 
 # Just a small comment added
 
