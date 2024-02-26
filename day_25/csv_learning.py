@@ -49,7 +49,8 @@ print(monday_temp_f)
 
 data_dict = {
     "students": ["Nagaraj", "NP", "Raj"],
-    "scores": [99, 100, 98]
+    "scores": [99, 100, 98],
+    "age": [24, 25, 23]
 }
 
 panda_data = pandas.DataFrame(data_dict)
