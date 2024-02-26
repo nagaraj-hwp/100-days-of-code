@@ -1,6 +1,6 @@
 from game_data import data
 import random
-from art import logo, vs
+from art import logo, versus2
 # from replit import clear
 from os import system
 
@@ -44,7 +44,7 @@ def game():
             account_b = get_random_account()
 
         print(f"Compare A: {format_data(account_a)}.")
-        print(vs)
+        print(versus2)
         print(f"Against B: {format_data(account_b)}.")
 
         guess = input("Who has more followers? Type 'A' or 'B': ").lower()
