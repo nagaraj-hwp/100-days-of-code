@@ -19,7 +19,7 @@ class Snake:
         for position in STARTING_POSITIONS:
             self.add_tail(position)
 
-    def reset(self):
+    def reset_snake(self):
         for seg in self.segments:
             seg.goto(1000, 1000)
         self.segments.clear()
