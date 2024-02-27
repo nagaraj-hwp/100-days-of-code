@@ -14,9 +14,9 @@
 #             temperatures.append(int(row[1]))
 #     print(temperatures)
 
-import pandas
-
-data = pandas.read_csv("weather_data.csv")
+# import pandas
+#
+# data = pandas.read_csv("weather_data.csv")
 # print(data["day"])  # both are same
 # print(data.day)  # both are same
 
@@ -35,25 +35,46 @@ data = pandas.read_csv("weather_data.csv")
 # row = data[data.temp == 14]
 # print(row)
 
-max_temp_row = data[data.temp == data.temp.max()]
-monday = data[data.day == "Monday"]
-monday_temp = monday.temp[0]
+# max_temp_row = data[data.temp == data.temp.max()]
+# monday = data[data.day == "Monday"]
+# monday1 = data[data.day == "Monday"]
+# monday_temp = monday.temp[0]
 # print(max_temp_row)
 # print(monday)
-print(monday_temp)
+# print(monday_temp)
 
-monday_temp_f = monday_temp * 9 / 5 + 32
-print(monday_temp_f)
+# monday_temp_f = monday_temp * 9 / 5 + 32
+# print(monday_temp_f)
 
 # Create a dataframe from scratch
 
-data_dict = {
-    "students": ["Nagaraj", "NP", "Raj"],
-    "scores": [99, 100, 98],
-    "age": [24, 25, 23]
+# data_dict = {
+#     "students": ["Nagaraj", "NP", "Raj"],
+#     "scores": [99, 100, 98],
+#     "age": [24, 25, 23]
+# }
+#
+# panda_data = pandas.DataFrame(data_dict)
+# print(panda_data)
+# panda_data.to_csv("student_data.csv")
+
+import pandas
+squirrel_data = pandas.read_csv("Squirrel_Data.csv")
+cinnamon_squirrel_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Cinnamon"])
+gray_squirrel_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Gray"])
+black_squirrel_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Black"])
+print("***************************************************************************")
+print(cinnamon_squirrel_count)
+# print("***************************************************************************")
+print(gray_squirrel_count)
+print(black_squirrel_count)
+print("***************************************************************************")
+
+squirrel_dict = {
+    "Fur color": ["Gray", "Black", "Cinnamon"],
+    "Count": [gray_squirrel_count, black_squirrel_count, cinnamon_squirrel_count],
 }
 
-panda_data = pandas.DataFrame(data_dict)
-print(panda_data)
-panda_data.to_csv("student_data.csv")
+squirrel_dict_data = pandas.DataFrame(squirrel_dict)
+squirrel_dict_data.to_csv("fur_color.csv")
 
