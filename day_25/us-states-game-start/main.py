@@ -28,10 +28,10 @@ def write_to_map(state_name, xcor, ycor):
 
 
 def create_csv_with_missed_states(all_states, guessed_states):
-    missed_states = []
-    for state in all_states:
-        if state not in guessed_states:
-            missed_states.append(state)
+    missed_states = [state for state in all_states if state not in guessed_states]
+    # for state in all_states:
+    #     if state not in guessed_states:
+    #         missed_states.append(state)
     missed_dict = {
         "State": missed_states
     }
