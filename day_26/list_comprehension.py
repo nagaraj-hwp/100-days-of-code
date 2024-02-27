@@ -22,7 +22,14 @@ capital_big_names = [name.upper() for name in names if len(name) >= 8]
 print(capital_big_names)
 
 
-# interactive coding exercise LESSON 28 DAY 26 - SQUARING NUMBERS
+# Interactive coding exercise LESSON 28 DAY 26 - SQUARING NUMBERS
 numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 squared_numbers = [num * num for num in numbers]
 print(squared_numbers)
+
+
+# Interactive coding exercise LESSON 29 DAY 26 - FILTERING EVEN NUMBERS
+list_of_strings = input().split(',')
+# sample input 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+result = [int(num.strip()) for num in list_of_strings if int(num) % 2 == 0]
+print(result)
