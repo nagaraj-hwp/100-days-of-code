@@ -12,11 +12,21 @@
 # window.mainloop()
 
 
-def fun(a=1, b=2, c=3):
-    print(a, b, c)
+# def fun(a=1, b=2, c=3):
+#     print(a, b, c)
+#
+#
+# fun()  # 1 2 3
+# fun(4, 5)  # 4 5 3
+# fun(4, c=9)  # 4 2 9
+# fun(b=10)  # 1 10 3
+
+# variable arguments
+def add(*args):
+    total = 0
+    for n in args:
+        total += n
+    return total
 
 
-fun()  # 1 2 3
-fun(4, 5)  # 4 5 3
-fun(4, c=9)  # 4 2 9
-fun(b=10)  # 1 10 3
+print(add(1, 2, 3, 4))
