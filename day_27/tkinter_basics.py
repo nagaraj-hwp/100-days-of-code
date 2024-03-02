@@ -1,32 +1,13 @@
-#  Tkinter UI basics understanding
+ Tkinter UI basics understanding
 
-# import tkinter
-#
-# window = tkinter.Tk()
-#
-# window.title("MY first UI with TK")
-# window.minsize(width=500, height=600)
-# label_1 = tkinter.Label(text="This is a sample label", font=("courier", 24))
-# label_1.pack(side="left")
-#
-# window.mainloop()
+import tkinter
 
+window = tkinter.Tk()
 
-# def fun(a=1, b=2, c=3):
-#     print(a, b, c)
-#
-#
-# fun()  # 1 2 3
-# fun(4, 5)  # 4 5 3
-# fun(4, c=9)  # 4 2 9
-# fun(b=10)  # 1 10 3
+window.title("MY first UI with TK")
+window.minsize(width=500, height=600)
+label_1 = tkinter.Label(text="This is a sample label", font=("courier", 24))
+label_1.pack(side="left")
 
-# variable arguments
-def add(*args):
-    total = 0
-    for n in args:
-        total += n
-    return total
+window.mainloop()
 
-
-print(add(1, 2, 3, 4, 5, 6  ))
