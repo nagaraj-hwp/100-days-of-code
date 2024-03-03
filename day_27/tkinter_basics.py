@@ -11,4 +11,3 @@ label_1 = tkinter.Label(text="This is a sample label", font=("courier", 24))
 label_1.pack(side="left")
 
 window.mainloop()
-
