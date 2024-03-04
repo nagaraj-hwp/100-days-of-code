@@ -25,4 +25,21 @@ def calculate(n, **kwargs):
     print(n)
 
 
-calculate(2, add=10, multiply=5)
+# calculate(2, add=10, multiply=5)
+
+
+class Car:
+
+    def __init__(self, **kw):
+        self.make_year = kw.get("make")
+        self.model = kw.get("model")
+        self.color = kw.get("color")
+        self.seats = kw.get("seats")
+
+
+my_car = Car(color="blue", make=2000)
+
+print(my_car.model)
+print(my_car.color)
+
+
