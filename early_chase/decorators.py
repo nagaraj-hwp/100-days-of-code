@@ -1,4 +1,5 @@
 # Decorators in python
+import time
 
 
 def outer():
@@ -6,6 +7,7 @@ def outer():
 
     def inner():
         print("Inner function call")
+
     inner()
 
 
@@ -17,6 +19,7 @@ def decorator_function(function):
         print("wrapper function call")
         result = function()
         print("result: ", result)
+
     return wrapper_function
 
 
@@ -28,7 +31,7 @@ def say_hi(name="Nagaraj"):
 say_hi()
 
 # Speed calculator function
-import time
+# LESSON 35 DAY 54 - PYTHON DECORATORS
 
 current_time = time.time()
 print(current_time)  # seconds since Jan 1st, 1970
