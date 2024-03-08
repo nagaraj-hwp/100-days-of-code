@@ -15,7 +15,7 @@ def add_single_expense(date):
 
 def update_expense_file(payment_date, expense_list):
     print("payment_date is", payment_date)
-    print("expense list before feeds", expense_list)
+    # print("expense list before feeds", expense_list)
     my_day_expense = {payment_date: expense_list}
     a = []
     if not os.path.isfile(WRITEFILE):
@@ -25,14 +25,14 @@ def update_expense_file(payment_date, expense_list):
     else:
         with open(WRITEFILE) as feeds_json:
             feeds = json.load(feeds_json)
-            print("existing feeds", feeds)
+            # print("existing feeds", feeds)
             if payment_date in feeds.keys():
                 exist = feeds[payment_date]
-                print("exist: ", exist)
+                # print("exist: ", exist)
                 expense_list.extend(exist)
-                print("expense list after feeds", expense_list)
+                # print("expense list after feeds", expense_list)
             feeds[payment_date] = expense_list
-            print(feeds)
+            # print(feeds)
         with open(WRITEFILE, mode='w') as f:
             f.write(json.dumps(feeds, indent=2))
 
@@ -59,7 +59,7 @@ def get_expense_date(expense_day):
         # date_match = re.search('((\\d{4})-(\\d{2})-(\\d{2}))', expense_day)
         # expense_date = date_match[0]
         day_to_date = expense_day
-    print(day_to_date)
+    print(f"\nAdding expense for date: {day_to_date}\n")
     return day_to_date
 
 
@@ -91,6 +91,7 @@ if expense_type == "d" or expense_type == "day":
     input_day = input("Enter date of the expense(YYYY−MM−DD) or just 'today' (careful with your expense date input): ")
     expense_date = get_expense_date(input_day)
     add_multiple_expense(expense_date)
+    calculate_day_expense(expense_date)
 elif expense_type == "single" or expense_type == "s":
     input_day = input("Enter which day it should be added to(careful with your expense date input): ")
     expense_date = get_expense_date(input_day)
