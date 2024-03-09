@@ -83,7 +83,7 @@ def calculate_day_expense(day_to_calc):
                 total_spent += item["Amount"]
         else:
             print("No such day exist :(\n")
-    print(f"'Total amount spent on {day_to_calc} is {total_spent} Rupees.'")
+    print(f"'Total amount spent on {day_to_calc} is ''{total_spent}'' Rupees.'")
 
 
 expense_type = input("Enter expense type, whether day or single expense or total: ")
