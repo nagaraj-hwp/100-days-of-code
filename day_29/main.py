@@ -2,11 +2,36 @@ from tkinter import *
 from tkinter import messagebox
 import os
 import json
+from random import randint, choice, shuffle
+import pyperclip
 
 PASSWORD_FILE = "data.json"
 
-
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+# Password Generator project
+
+
+def generate_password():
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+               'w', 'x', 'y',
+               'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
+               'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+    password_letters = [choice(letters) for _ in range(randint(8, 9))]
+    password_symbols = [choice(symbols) for _ in range(randint(4, 5))]
+    password_numbers = [choice(numbers) for _ in range(randint(4, 5))]
+    password_list = password_letters + password_symbols + password_numbers
+
+    shuffle(password_list)
+    password_gen = "".join(password_list)
+    # print("Your password is:", password_gen)
+    password_entry.delete(0, END)
+    password_entry.insert(0, password_gen)
+    pyperclip.copy(password_gen)
+
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
     process_site = True
@@ -74,7 +99,7 @@ password_entry = Entry(width=30)
 password_entry.grid(column=1, row=3)
 
 # Buttons in App
-generate_button = Button(text="Generate Password")
+generate_button = Button(text="Generate Password", command=generate_password)
 generate_button.grid(column=2, row=3)
 add_password_button = Button(text="Add Password", width=40, command=save_password)
 add_password_button.grid(column=1, row=4, columnspan=2)
