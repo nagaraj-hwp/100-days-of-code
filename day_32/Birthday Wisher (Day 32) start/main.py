@@ -1,10 +1,9 @@
 import smtplib
 import datetime as dt
-import random
+from random import choice, randint
 import pandas
 
 
-letter_list = ["letter_1.txt", "letter_2.txt", "letter_3.txt"]
 my_email = "nagarajdevtest@gmail.com"
 with open("../../ignore_dir/mail_app_password.txt") as passcode:
     password = passcode.read()
@@ -27,12 +26,13 @@ def week_start():
     if day_of_week == 0:
         with open("quotes.txt", "r") as quotes:
             quotes_list = quotes.readlines()
-            random_quote = random.choice(quotes_list)
+            random_quote = choice(quotes_list)
         send_monday_email(random_quote)
 
 
 def get_email_body(name):
-    letter_file = random.choice(letter_list)
+    letter_file = f"letter_{randint(1, 3)}.txt"
+    print(letter_file)
     with open(letter_file) as wish:
         content = wish.read()
         email_content = content.replace("[name]", name)
@@ -60,5 +60,5 @@ def wish_for_birthday():
             send_birthday_wish(row)
 
 
-# wish_for_birthday()
+wish_for_birthday()
 # week_start()
