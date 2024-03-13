@@ -1,5 +1,6 @@
 import requests
 
+
 class Question:
 
     def __init__(self, q_text, q_answer):
@@ -22,10 +23,10 @@ class Question:
         data = response.json()
 
         while count < 10:
-            question = data["results"][count]["question"]
-            answer = data["results"][count]["correct_answer"]
-            print(question)
-            print(answer)
+            self.text = data["results"][count]["question"]
+            self.answer = data["results"][count]["correct_answer"]
+            print(self.text)
+            print(self.answer)
             count += 1
 
 
