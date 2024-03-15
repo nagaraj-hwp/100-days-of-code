@@ -15,7 +15,9 @@ class QuizBrain:
     def next_question(self):
         self.current_question = self.question_list[self.question_number]
         self.question_number += 1
-        q_text = html.escape(self.current_question.text)
+        # print(self.current_question.text)
+        q_text = html.unescape(self.current_question.text)
+        # print(q_text)
         return f"Q.{self.question_number}: {q_text}"
 
     def check_answer(self, user_answer):
