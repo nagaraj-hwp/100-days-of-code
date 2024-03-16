@@ -7,8 +7,8 @@ with open("../ignore_dir/api_key.txt") as key_file:
     api_key = key_file.read()
 
 
-MY_LAT = 9.92
-MY_LONG = 78.11
+MY_LAT = 17.05
+MY_LONG = 174.11
 
 base_url = "https://api.openweathermap.org/data/2.5/forecast"
 
@@ -21,5 +21,9 @@ weather_params = {
 
 response = requests.get(url=base_url, params=weather_params)
 response.raise_for_status()
-print(response.status_code)
-print(response.json())
+weather_data = response.json()
+print(weather_data)
+for data in weather_data["list"]:
+    if data["weather"][0]["id"] < 700:
+        print("Bring an umbrella.")
+        break
