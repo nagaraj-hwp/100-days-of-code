@@ -2,9 +2,26 @@
 import datetime
 import json
 import os
+import re
 
 # Can keep an empty json file
 WRITEFILE = "../../ignore_dir/expenses_t_file.json"
+
+months_dict1 = {
+    '01': 'January',
+    '02': 'February',
+    '03': 'March',
+    '04': 'April',
+    '05': 'May',
+    '06': 'June',
+    '07': 'July',
+    '08': 'August',
+    '09': 'September',
+    '10': 'October',
+    '11': 'November',
+    '12': 'December'
+}
+months_dict = {'January': '01', 'February': '02', 'March': '03', 'April': '04', 'May': '05', 'June': '06', 'July': '07', 'August': '08', 'September': '09', 'October': '10', 'November': '11', 'December': '12'}
 
 
 def add_single_expense(date):
@@ -63,14 +80,17 @@ def get_expense_date(expense_day):
     return day_to_date
 
 
-def calculate_total_amount():
+def calculate_month_expense(month):
+    month_pattern = rf'(\d{{4}})-{month}-(0[1-9]|[1-2][0-9]|3[0-1])'
     with open(WRITEFILE) as feeds_json:
         feeds = json.load(feeds_json)
         total_spent = 0
         for key, values in feeds.items():
-            for value in values:
-                total_spent += value["Amount"]
-    print(f"'Total amount spent as per record is {total_spent} Rupees.'")
+            match = re.match(month_pattern, key)
+            if match is not None:
+                for value in values:
+                    total_spent += value["Amount"]
+    print(f"'Total amount spent on month {months_dict1[month]} is {total_spent} Rupees.'")
 
 
 def calculate_day_expense(day_to_calc):
@@ -86,6 +106,16 @@ def calculate_day_expense(day_to_calc):
     print(f"'Total amount spent on {day_to_calc} is ''{total_spent}'' Rupees.'")
 
 
+def calculate_total_amount():
+    with open(WRITEFILE) as feeds_json:
+        feeds = json.load(feeds_json)
+        total_spent = 0
+        for key, values in feeds.items():
+            for value in values:
+                total_spent += value["Amount"]
+    print(f"'Total amount spent as per record is {total_spent} Rupees.'")
+
+
 expense_type = input("Enter expense type, whether day or single expense or total: ")
 if expense_type == "d" or expense_type == "day":
     input_day = input("Enter date of the expense(YYYY−MM−DD) or just 'today' (careful with your expense date input): ")
@@ -97,9 +127,15 @@ elif expense_type == "single" or expense_type == "s":
     expense_date = get_expense_date(input_day)
     add_single_expense(expense_date)
 elif expense_type == "total" or expense_type == "t":
-    unique_day_or_all = input("Wanna calculate total expense till now or specific date: (all or one): ")
+    unique_day_or_all = input("Wanna calculate total expense till now or specific date or month: (all or one): ")
     if unique_day_or_all == "all":
         calculate_total_amount()
-    else:
+    elif unique_day_or_all == "d" or unique_day_or_all == "day":
         day_to_calculate = input("Enter which day you wanted to calculate: ")
         calculate_day_expense(day_to_calculate)
+    elif unique_day_or_all == "m" or unique_day_or_all == "month":
+        month_to_calculate = input("Enter which month you wants to calculate: ")
+        if month_to_calculate in months_dict1:
+            calculate_month_expense(month_to_calculate)
+        else:
+            calculate_month_expense(months_dict[month_to_calculate.title()])
