@@ -151,6 +151,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Unnecessary py files
+co-pilot.py
+
 # pytype static type analyzer
 .pytype/
 
