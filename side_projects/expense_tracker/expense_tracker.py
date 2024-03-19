@@ -1,5 +1,5 @@
 # Creating a simple expense tracker using Python
-import datetime
+import datetime as dt
 import json
 import os
 import re
@@ -58,8 +58,8 @@ def add_multiple_expense(date):
     expenses = []
     entry = True
     while entry:
-        new_expense = {"Amount": int(input("Enter amount you have spent: ")),
-                       "Description": input("Enter what you spent for: ")}
+        new_expense = {"Amount": int(input("Enter amount you have spent (number input): ")),
+                       "Description": input("Enter what you spent for (string): ")}
         expenses.append(new_expense)
         more = input("Is there any more expense to add: ").lower()
         if more == "true" or more == "y" or more == "yes":
@@ -71,7 +71,10 @@ def add_multiple_expense(date):
 
 def get_expense_date(expense_day):
     if expense_day == "today" or expense_day == "td":
-        day_to_date = str(datetime.date.today())
+        day_to_date = str(dt.date.today())
+    elif expense_day == "yesterday" or expense_day == "y":
+        today = dt.date.today()
+        day_to_date = today - dt.timedelta(days=1)
     else:
         # date_match = re.search('((\\d{4})-(\\d{2})-(\\d{2}))', expense_day)
         # expense_date = date_match[0]
