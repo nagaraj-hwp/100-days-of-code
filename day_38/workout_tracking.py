@@ -72,4 +72,3 @@ for exercise in result["exercises"]:
         json=sheet_inputs,
         headers=bearer_headers
     )
-
