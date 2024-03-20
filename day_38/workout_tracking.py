@@ -11,6 +11,7 @@ with open("../ignore_dir/api_key.txt") as key_file:
     key_data = key_file.readlines()
     api_key_nutritionix = key_data[24].strip()
     app_id_nutritionix = key_data[26].strip()
+    bearer_auth_token = key_data[28].strip()
 
 
 exercise_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
@@ -33,8 +34,7 @@ response = requests.post(url=exercise_endpoint, headers=headers, json=input_json
 result = response.json()
 print(result)
 
-
-sheet_endpoint = "https://api.sheety.co/451dcd24930fcd95a679b9ea814007ce/myWorkouts/workouts"
+sheet_endpoint = ""
 
 today_date = datetime.now().strftime("%d/%m/%Y")
 now_time = datetime.now().strftime("%X")
@@ -49,5 +49,27 @@ for exercise in result["exercises"]:
             "calories": exercise["nf_calories"]
         }
     }
-    sheet_response = requests.post(sheet_endpoint, json=sheet_inputs)
-    print(sheet_response.text)
+    # sheet_response = requests.post(sheet_endpoint, json=sheet_inputs)
+    # print(sheet_response.text)
+    # sheet_response = requests.post(sheet_endpoint, json=sheet_inputs)
+
+    # Basic Authentication
+    # sheet_response = requests.post(
+    #     sheet_endpoint,
+    #     json=sheet_inputs,
+    #     auth=(
+    #         YOUR USERNAME,
+    #         YOUR PASSWORD,
+    #     )
+    # )
+
+    # Bearer Token Authentication
+    bearer_headers = {
+        "Authorization": f"Bearer {bearer_auth_token}"
+    }
+    sheet_response = requests.post(
+        sheet_endpoint,
+        json=sheet_inputs,
+        headers=bearer_headers
+    )
+
