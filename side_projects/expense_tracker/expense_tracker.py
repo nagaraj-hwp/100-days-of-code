@@ -59,8 +59,8 @@ def add_multiple_expense(date):
     expenses = []
     entry = True
     while entry:
-        new_expense = {"Amount": int(input("Enter amount you have spent (number input): ")),
-                       "Description": input("Enter what you spent for (string): ")}
+        new_expense = {"Amount": int(input("Enter amount you have spent (number input Eg: 123): ")),
+                       "Description": input("Enter what you spent for (string Eg: 'Groceries'): ")}
         expenses.append(new_expense)
         more = input("Is there any more expense to add: ").lower()
         if more == "true" or more == "y" or more == "yes":
