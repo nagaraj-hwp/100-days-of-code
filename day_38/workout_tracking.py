@@ -53,7 +53,7 @@ for exercise in result["exercises"]:
     # print(sheet_response.text)
     # sheet_response = requests.post(sheet_endpoint, json=sheet_inputs)
 
-    # Basic Authentication
+    # Basic Authentication for sheety api call
     # sheet_response = requests.post(
     #     sheet_endpoint,
     #     json=sheet_inputs,
