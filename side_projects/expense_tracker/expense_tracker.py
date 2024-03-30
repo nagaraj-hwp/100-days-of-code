@@ -75,7 +75,7 @@ def get_expense_date(expense_day):
         day_to_date = str(dt.date.today())
     elif expense_day == "yesterday" or expense_day == "y":
         today = dt.date.today()
-        day_to_date = today - dt.timedelta(days=1)
+        day_to_date = str(today - dt.timedelta(days=1))
     else:
         # date_match = re.search('((\\d{4})-(\\d{2})-(\\d{2}))', expense_day)
         # expense_date = date_match[0]
