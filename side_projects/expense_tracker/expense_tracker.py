@@ -119,7 +119,7 @@ def calculate_day_expense(day_to_calc):
             for item in spent_list:
                 total_spent += item["Amount"]
         else:
-            print("No such day exist :(\n")
+            print("No such day exist, check your day.\n")
     print(f"'Total amount spent on {day_to_calc} is ''{total_spent}'' Rupees.'")
 
 
