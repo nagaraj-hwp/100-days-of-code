@@ -135,6 +135,8 @@ def calculate_total_amount():
 
 def update_back_up_file():
     shutil.copyfile('../../ignore_dir/expenses_t_file.json', '../../ignore_dir/expense_backup_file.json')
+    shutil.copyfile('../../ignore_dir/expenses_t_file.json', '../../../private_data_files/expenses_t_file.json')
+    shutil.copyfile('../../ignore_dir/expenses_t_file.json', '../../../private_data_files/expense_backup_file.json')
 
 
 expense_type = input("Enter expense type, whether day or single expense or total: ")
