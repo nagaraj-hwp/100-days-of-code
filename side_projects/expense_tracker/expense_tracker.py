@@ -139,31 +139,37 @@ def update_back_up_file():
     shutil.copyfile('../../ignore_dir/expenses_t_file.json', '../../../private_data_files/expense_backup_file.json')
 
 
-expense_type = input("Enter expense type, whether day or single expense or total: ")
-if expense_type == "d" or expense_type == "day":
-    input_day = input("Enter date of the expense(YYYY−MM−DD) or just 'today' (careful with your expense date input): ")
-    expense_date = get_expense_date(input_day)
-    add_multiple_expense(expense_date)
-    update_back_up_file()
-    calculate_day_expense(expense_date)
-elif expense_type == "single" or expense_type == "s":
-    input_day = input("Enter which day it should be added to(careful with your expense date input): ")
-    expense_date = get_expense_date(input_day)
-    add_single_expense(expense_date)
-    update_back_up_file()
-elif expense_type == "total" or expense_type == "t":
-    unique_day_or_all = input("Wanna calculate total expense till now or specific date or month or week: (all or one): ")
-    if unique_day_or_all == "all":
-        calculate_total_amount()
-    elif unique_day_or_all == "d" or unique_day_or_all == "day":
-        day_to_calculate = get_expense_date(input("Enter which day you wants to calculate: "))
-        calculate_day_expense(day_to_calculate)
-    elif unique_day_or_all == "m" or unique_day_or_all == "month":
-        month_to_calculate = input("Enter which month you wants to calculate: ")
-        if month_to_calculate in months_dict1:
-            calculate_month_expense(month_to_calculate)
-        else:
-            calculate_month_expense(months_dict[month_to_calculate.title()])
-    elif unique_day_or_all == "w" or unique_day_or_all == "week":
-        calculate_week_expense()
+def initiate_calculation():
+    expense_type = input("Enter expense type, whether day or single expense or total: ")
+    if expense_type == "d" or expense_type == "day":
+        input_day = input("Enter date of the expense(YYYY−MM−DD) or just 'today' "
+                          "(careful with your expense date input): ")
+        expense_date = get_expense_date(input_day)
+        add_multiple_expense(expense_date)
+        update_back_up_file()
+        calculate_day_expense(expense_date)
+    elif expense_type == "single" or expense_type == "s":
+        input_day = input("Enter which day it should be added to(careful with your expense date input): ")
+        expense_date = get_expense_date(input_day)
+        add_single_expense(expense_date)
+        update_back_up_file()
+    elif expense_type == "total" or expense_type == "t":
+        unique_day_or_all = input("Wanna calculate total expense till now or specific date or month"
+                                  " or week: (all or one): ")
+        if unique_day_or_all == "all":
+            calculate_total_amount()
+        elif unique_day_or_all == "d" or unique_day_or_all == "day":
+            day_to_calculate = get_expense_date(input("Enter which day you wants to calculate: "))
+            calculate_day_expense(day_to_calculate)
+        elif unique_day_or_all == "m" or unique_day_or_all == "month":
+            month_to_calculate = input("Enter which month you wants to calculate: ")
+            if month_to_calculate in months_dict1:
+                calculate_month_expense(month_to_calculate)
+            else:
+                calculate_month_expense(months_dict[month_to_calculate.title()])
+        elif unique_day_or_all == "w" or unique_day_or_all == "week":
+            calculate_week_expense()
 
+
+initiate_calculation()
+# update_back_up_file()
