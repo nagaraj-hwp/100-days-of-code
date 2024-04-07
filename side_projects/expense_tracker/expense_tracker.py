@@ -22,7 +22,20 @@ months_dict1 = {
     '11': 'November',
     '12': 'December'
 }
-months_dict = {'January': '01', 'February': '02', 'March': '03', 'April': '04', 'May': '05', 'June': '06', 'July': '07', 'August': '08', 'September': '09', 'October': '10', 'November': '11', 'December': '12'}
+months_dict = {
+    'January': '01',
+    'February': '02',
+    'March': '03',
+    'April': '04',
+    'May': '05',
+    'June': '06',
+    'July': '07',
+    'August': '08',
+    'September': '09',
+    'October': '10',
+    'November': '11',
+    'December': '12'
+}
 
 
 def add_single_expense(date):
@@ -137,6 +150,7 @@ def update_back_up_file():
     shutil.copyfile('../../ignore_dir/expenses_t_file.json', '../../ignore_dir/expense_backup_file.json')
     shutil.copyfile('../../ignore_dir/expenses_t_file.json', '../../../private_data_files/expenses_t_file.json')
     shutil.copyfile('../../ignore_dir/expenses_t_file.json', '../../../private_data_files/expense_backup_file.json')
+    print("Updated backup file.")
 
 
 def initiate_calculation():
