@@ -39,7 +39,7 @@ months_dict = {
 
 
 def add_single_expense(date):
-    new_expense = {"Amount": int(input("Enter amount you have spent: ")),
+    new_expense = {"Amount": int(input("Enter amount you have spent Rs ₹: ")),
                    "Description": input("Enter what you spent for: ")}
     update_expense_file(date, [new_expense])
 
@@ -72,7 +72,7 @@ def add_multiple_expense(date):
     expenses = []
     entry = True
     while entry:
-        new_expense = {"Amount": int(input("Enter amount you have spent (number input Eg: 123): ")),
+        new_expense = {"Amount": int(input("Enter amount you have spent Rs ₹: ")),
                        "Description": input("Enter what you spent for (string Eg: 'Groceries'): ")}
         expenses.append(new_expense)
         more = input("Is there any more expense to add: ").lower()
