@@ -71,4 +71,3 @@ def get_expense_date(expense_day):
 def update_back_up_file():
     shutil.copyfile('../../ignore_dir/expense_log_test.json', '../../ignore_dir/expense_log_test_bkp.json')
     print("Updated backup file.")
-
