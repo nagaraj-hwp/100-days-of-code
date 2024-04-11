@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# zip files
+*.zip
+
 # personal folder
 ignore_dir/*
 ignore_dir
