@@ -65,17 +65,17 @@ def calculate_month_expense(month):
     print(f"'Total amount spent on month {months_dict1[month]} is {total_spent} Rupees.'")
 
 
-def calculate_week_expense():
-    today = dt.date.today()
-    week_days = [str(today - dt.timedelta(days=i)) for i in range(0, 7)]
-    with open(WRITEFILE) as feeds_json:
-        feeds = json.load(feeds_json)
-        total_spent = 0
-        for key, values in feeds.items():
-            if key in week_days:
-                for value in values:
-                    total_spent += value["Amount"]
-    print(f"'Total amount spent last week is {total_spent} Rupees.'")
+# def calculate_week_expense():
+#     today = dt.date.today()
+#     week_days = [str(today - dt.timedelta(days=i)) for i in range(0, 7)]
+#     with open(WRITEFILE) as feeds_json:
+#         feeds = json.load(feeds_json)
+#         total_spent = 0
+#         for key, values in feeds.items():
+#             if key in week_days:
+#                 for value in values:
+#                     total_spent += value["Amount"]
+#     print(f"'Total amount spent last week is {total_spent} Rupees.'")
 
 
 def calculate_last_n_days_expense(number_of_days=1):

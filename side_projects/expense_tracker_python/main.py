@@ -36,7 +36,7 @@ def initiate_total_calculation():
         else:
             calc_total.calculate_month_expense(calc_total.months_dict[month_to_calculate.title()])
     elif unique_day_or_all == "w" or unique_day_or_all == "week":
-        calc_total.calculate_week_expense()
+        calc_total.calculate_last_n_days_expense(7)
     elif unique_day_or_all == "l" or unique_day_or_all == "last":
         calc_total.calculate_last_n_days_expense(int(input("Enter number of days wants to calculate: ")))
     else:
