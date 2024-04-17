@@ -40,7 +40,7 @@ def initiate_total_calculation():
     elif unique_day_or_all == "l" or unique_day_or_all == "last":
         calc_total.calculate_last_n_days_expense(int(input("Enter number of days wants to calculate: ")))
     else:
-        print("Your choice is not valid or unavailable here")
+        print("Your choice is not valid or unavailable here.")
 
 
 def get_user_action():
