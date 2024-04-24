@@ -1,5 +1,6 @@
 # Creating a simple expense tracker using Python
 import datetime as dt
+from datetime import timedelta
 import json
 import re
 
@@ -50,6 +51,25 @@ def get_expense_date(expense_day):
         day_to_date = expense_day
     print(f"\nAdding expense for date: {day_to_date}\n")
     return day_to_date
+
+
+def calculate_between_dates(start_dt, end_dt):
+    start_date = dt.datetime.strptime(start_dt, "%Y-%m-%d")
+    end_date = dt.datetime.strptime(end_dt, "%Y-%m-%d")
+    if start_date > end_date:
+        print("Can't proceed: Start date is after end date")
+        return 0
+    no_of_days = (end_date - start_date).days
+    days_to_calculate = [(start_date + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(no_of_days + 1)]
+    print(days_to_calculate)
+    with open(WRITEFILE) as data_feeds:
+        feeds = json.load(data_feeds)
+        total_spent = 0
+        for key, values in feeds.items():
+            if key in days_to_calculate:
+                for value in values:
+                    total_spent += value["Amount"]
+    print(f"Total amount spent on this particular {no_of_days} is '{total_spent}' Rupees.")
 
 
 def calculate_month_expense(month):
