@@ -22,8 +22,15 @@ def initiate_expense_calculation():
 
 
 def initiate_total_calculation():
-    unique_day_or_all = input("Specific date expense or month, week or last few days or total expense till date"
-                              ": (all / day / month / week / last): ")
+    user_notification = """    Enter 'all' to calculate all expense added till date,
+    Enter 'day' or 'd' to calculate single day expense,
+    Enter 'month' or 'm' to calculate single month expense,
+    Enter 'week' or 'w' to calculate last week expense,
+    Enter 'last' or 'l' to calculate last few days expense,
+    Enter 'dates' or 'dt' to calculate expense between two dates
+    """
+    print(user_notification)
+    unique_day_or_all = input("Enter your choice from above: ")
     if unique_day_or_all == "all":
         calc_total.calculate_total_amount()
     elif unique_day_or_all == "d" or unique_day_or_all == "day":
@@ -39,6 +46,8 @@ def initiate_total_calculation():
         calc_total.calculate_last_n_days_expense(7)
     elif unique_day_or_all == "l" or unique_day_or_all == "last":
         calc_total.calculate_last_n_days_expense(int(input("Enter number of days wants to calculate: ")))
+    elif unique_day_or_all == "dt" or unique_day_or_all == "dates":
+        calc_total.calculate_between_dates(input("Enter start date: "), input("Enter end date: "))
     else:
         print("Your choice is not valid or unavailable here.")
 
