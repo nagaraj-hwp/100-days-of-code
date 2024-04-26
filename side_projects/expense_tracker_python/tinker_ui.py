@@ -58,8 +58,8 @@ def get_user_action():
         initiate_total_calculation()
 
 
-if __name__ == "__main__":
-    get_user_action()
+# if __name__ == "__main__":
+#     get_user_action()
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
@@ -149,7 +149,7 @@ user_entry.grid(column=1, row=1)
 user_entry.focus()
 user_choice = user_entry.get()
 submit_button = Button(width=20, text="Submit", command=lambda: get_user_action())
-submit_button.grid(column=2, row=2)
+submit_button.grid(column=1, row=2)
 # email_label = Label(text="Email/Username:")
 # email_label.grid(column=0, row=2)
 # password_label = Label(text="Password:")
