@@ -1,10 +1,7 @@
 # Creating a simple expense tracker using Python
 from tkinter import *
 from tkinter import messagebox
-import os
 import json
-from random import randint, choice, shuffle
-import pyperclip
 import re
 import calc_total
 import file_update
@@ -56,7 +53,7 @@ def initiate_total_calculation():
         print("Your choice is not valid or unavailable here.")
 
 
-def get_user_action(event=None):
+def get_user_action():
     expense_or_total = user_entry.get()
     if expense_or_total == "expense" or expense_or_total == "ex" or expense_or_total == "e":
         open_expense_window()
@@ -76,7 +73,8 @@ def open_expense_window():
     expense_type_entry = Entry(expense_window)
     expense_type_entry.grid(row=0, column=1, padx=20, pady=20)
 
-    submit_type_button = Button(expense_window, width=20, text="Submit", command=lambda: initiate_expense_calculation(expense_type_entry.get()))
+    submit_type_button = Button(expense_window, width=20, text="Submit",
+                                command=lambda: initiate_expense_calculation(expense_type_entry.get()))
     submit_type_button.grid(padx=20, pady=20, column=1, row=2)
 
     expense_window.mainloop()
