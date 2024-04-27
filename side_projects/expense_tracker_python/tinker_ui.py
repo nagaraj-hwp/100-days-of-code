@@ -10,8 +10,7 @@ import calc_total
 import file_update
 
 
-def initiate_expense_calculation():
-    expense_type = input("Enter expense type, whether a complete day expense or single expense: ")
+def initiate_expense_calculation(expense_type):
     if expense_type == "d" or expense_type == "day":
         input_day = input("Enter date of the expense(YYYY−MM−DD) or just 'today' "
                           "(careful with your expense date input): ")
@@ -29,6 +28,13 @@ def initiate_expense_calculation():
 
 
 def initiate_total_calculation():
+    user_notification = """    Enter 'all' to calculate all expense added till date,
+        Enter 'day' or 'd' to calculate single day expense,
+        Enter 'month' or 'm' to calculate single month expense,
+        Enter 'week' or 'w' to calculate last week expense,
+        Enter 'last' or 'l' to calculate last few days expense,
+        Enter 'dates' or 'dt' to calculate expense between two dates
+        """
     unique_day_or_all = input("Specific date expense or month, week or last few days or total expense till date"
                               ": (all / day / month / week / last): ")
     if unique_day_or_all == "all":
@@ -50,16 +56,35 @@ def initiate_total_calculation():
         print("Your choice is not valid or unavailable here.")
 
 
-def get_user_action():
-    expense_or_total = input("Are you adding expense or want to calculate total: ")
+def get_user_action(event=None):
+    expense_or_total = user_entry.get()
     if expense_or_total == "expense" or expense_or_total == "ex" or expense_or_total == "e":
-        initiate_expense_calculation()
+        open_expense_window()
     elif expense_or_total == "total" or expense_or_total == "t":
-        initiate_total_calculation()
+        open_total_window()
 
 
-# if __name__ == "__main__":
-#     get_user_action()
+def open_expense_window():
+    main_window.destroy()
+    expense_window = Tk()
+    expense_window.title("NP's Expense Tracker")
+    expense_window.config(padx=100, pady=50, bg=BLUE)
+
+    expense_type = Label(expense_window, text="Enter expense type, day or single: ")
+    expense_type.grid(row=0, column=0, padx=20, pady=20)
+
+    expense_type_entry = Entry(expense_window)
+    expense_type_entry.grid(row=0, column=1, padx=20, pady=20)
+
+    submit_type_button = Button(expense_window, width=20, text="Submit", command=lambda: initiate_expense_calculation(expense_type_entry.get()))
+    submit_type_button.grid(padx=20, pady=20, column=1, row=2)
+
+    expense_window.mainloop()
+
+
+def open_total_window():
+    pass
+
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
@@ -73,14 +98,12 @@ CHECKMARK = "🗹"
 # ---------------------------- UI SETUP ------------------------------- #
 
 
-window = Tk()
-window.title("NP's Expense Tracker")
-window.config(padx=100, pady=50, bg=BLUE)
+main_window = Tk()
+main_window.title("NP's Expense Tracker")
+main_window.config(padx=100, pady=50, bg=BLUE)
 
 PASSWORD_FILE = "data.json"
 DATA_FILE = "data2.json"
-
-
 
 
 # ---------------------------- SEARCH PASSWORD ------------------------------- #
@@ -131,6 +154,7 @@ def save_password2():
                 with open(DATA_FILE, mode='w') as data_file:
                     json.dump(data, data_file, indent=4)
 
+
 # ---------------------------- SEARCH PASSWORD ------------------------------- #
 def clear_fields():
     web_entry.delete(0, END)
@@ -141,42 +165,12 @@ def clear_fields():
 
 # ---------------------------- UI SETUP ------------------------------- #
 
-# Labels in App
-expense_or_total_label = Label(text="Adding expense or Total calculation")
-expense_or_total_label.grid(column=0, row=1)
+# Launcher main_window and elements in App
+expense_or_total_label = Label(text="Expense or Total?: ")
+expense_or_total_label.grid(padx=20, pady=20, column=0, row=1)
 user_entry = Entry(width=30)
-user_entry.grid(column=1, row=1)
-user_entry.focus()
-user_choice = user_entry.get()
+user_entry.grid(padx=20, pady=20, column=1, row=1)
 submit_button = Button(width=20, text="Submit", command=lambda: get_user_action())
-submit_button.grid(column=1, row=2)
-# email_label = Label(text="Email/Username:")
-# email_label.grid(column=0, row=2)
-# password_label = Label(text="Password:")
-# password_label.grid(column=0, row=3)
+submit_button.grid(padx=20, pady=20, column=1, row=2)
 
-# Entries in App
-# web_entry = Entry(width=30)
-# web_entry.grid(column=1, row=1)
-# web_entry.focus()
-#
-# search_button = Button(width=20, text="Search", command=search_password)
-# search_button.grid(column=2, row=1)
-#
-# email_entry = Entry(width=30)
-# email_entry.grid(column=1, row=2)
-# email_entry.insert(0, "nagaraj@gmail.com")
-#
-# clear_button = Button(width=20, text="Clear", command=clear_fields)
-# clear_button.grid(column=2, row=2)
-#
-# password_entry = Entry(width=30)
-# password_entry.grid(column=1, row=3)
-#
-# # Buttons in App
-# generate_button = Button(width=20, text="Generate Password", command=generate_password)
-# generate_button.grid(column=2, row=3)
-# add_password_button = Button(width=45, text="Add Password", command=save_password2)
-# add_password_button.grid(column=1, row=4, columnspan=2)
-
-window.mainloop()
+main_window.mainloop()
