@@ -48,7 +48,7 @@ def get_expense_date(expense_day):
         # date_match = re.search('((\\d{4})-(\\d{2})-(\\d{2}))', expense_day)
         # expense_date = date_match[0]
         day_to_date = expense_day
-    print(f"\nAdding expense for date: {day_to_date}\n")
+    # print(f"\nAdding expense for date: {day_to_date}\n")
     return day_to_date
 
 
@@ -106,8 +106,9 @@ def calculate_day_expense(day_to_calc):
             for item in spent_list:
                 total_spent += item["Amount"]
         else:
-            print("No such day exist, check your day.\n")
-    print(f"'Total amount spent on {day_to_calc} is ''{total_spent}'' Rupees.'")
+            print(f"No such day exist as {day_to_calc}, check your day.\n")
+    # print(f"'Total amount spent on {day_to_calc} is ''{total_spent}'' Rupees.'")
+    return total_spent
 
 
 def calculate_total_amount():
