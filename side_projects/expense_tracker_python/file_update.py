@@ -9,9 +9,7 @@ import shutil
 WRITEFILE = "../../ignore_dir/expense_log_test.json"
 
 
-def add_single_expense(date):
-    new_expense = {"Amount": int(input("Enter amount you have spent Rs ₹: ")),
-                   "Description": input("Enter what you spent for: ")}
+def add_single_expense(date, new_expense):
     update_expense_file(date, [new_expense])
 
 
