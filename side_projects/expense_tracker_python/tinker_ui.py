@@ -7,19 +7,24 @@ import calc_total
 import file_update
 
 
+# ---------------------------- CONSTANTS ------------------------------- #
+PINK = "#e2979c"
+RED = "#e7305b"
+GREEN = "#9bdeac"
+BLUE = "#164694"
+YELLOW = "#ffffaa"
+FONT_NAME = "Courier"
+CHECKMARK = "🗹"
+
+
 def initiate_expense_calculation(expense_type):
     if expense_type == "d" or expense_type == "day":
         input_day = input("Enter date of the expense(YYYY−MM−DD) or just 'today' "
                           "(careful with your expense date input): ")
         expense_date = calc_total.get_expense_date(input_day)
-        file_update.add_multiple_expense(expense_date)
+        file_update.add_single_expense(expense_date, new_expense=None)
         file_update.update_back_up_file()
         calc_total.calculate_day_expense(expense_date)
-    elif expense_type == "single" or expense_type == "s":
-        input_day = input("Enter which day it should be added to(careful with your expense date input): ")
-        expense_date = calc_total.get_expense_date(input_day)
-        file_update.add_single_expense(expense_date)
-        file_update.update_back_up_file()
     else:
         print("Your choice is not valid or unavailable here")
 
@@ -61,6 +66,73 @@ def get_user_action():
         open_total_window()
 
 
+def calculate_all():
+    pass
+
+
+def take_expense(expense_date, expense_entry, expense_des_entry):
+    process = True
+    if expense_date.get() == "" or expense_date.get() is None:
+        messagebox.showinfo(title="Expense date shouldn't be empty", message="Verify the Expense date field")
+        process = False
+    if expense_entry.get() == "" or expense_entry.get() is None and isinstance(expense_entry.get(), int):
+        messagebox.showinfo(title="Expense Amount shouldn't be empty", message="Verify the Expense Amount field")
+        process = False
+    if expense_des_entry.get() == "" or expense_des_entry.get() is None:
+        messagebox.showinfo(title="Expense Description shouldn't be empty",
+                            message="Verify the Expense Description field")
+        process = False
+    if process:
+        expense = {
+            "Amount": int(expense_entry.get()),
+            "Description": str(expense_des_entry.get())
+        }
+        exp_day = calc_total.get_expense_date(str(expense_date.get()))
+        expense_date.delete(0, END)
+        expense_entry.delete(0, END)
+        expense_des_entry.delete(0, END)
+        file_update.add_single_expense(exp_day, expense)
+    else:
+        messagebox.showinfo(title="Error occurred",
+                            message="Verify the input fields")
+        process = False
+
+
+def open_expense_initiation_window(expense_window):
+    expense_window.destroy()
+    add_window = Tk()
+    add_window.title("NP's Expense Tracker: Add expense")
+    add_window.config(padx=100, pady=50, bg=BLUE)
+
+    expense_date = Label(add_window, text="Enter expense date ")
+    expense_date.grid(row=0, column=0, padx=20, pady=20)
+
+    expense_date_entry = Entry(add_window)
+    expense_date_entry.grid(row=0, column=1, padx=20, pady=20)
+
+    expense_amount = Label(add_window, text="Enter expense amount ")
+    expense_amount.grid(row=1, column=0, padx=20, pady=20)
+
+    expense_amount_entry = Entry(add_window)
+    expense_amount_entry.grid(row=1, column=1, padx=20, pady=20)
+
+    expense_description = Label(add_window, text="Enter expense description ")
+    expense_description.grid(row=2, column=0, padx=20, pady=20)
+
+    expense_description_entry = Entry(add_window)
+    expense_description_entry.grid(row=2, column=1, padx=20, pady=20)
+
+    more_expense_button = Button(add_window, width=20, text="Add Expense",
+                                 command=lambda: take_expense(expense_date_entry,
+                                                              expense_amount_entry, expense_description_entry))
+    more_expense_button.grid(padx=20, pady=20, column=1, row=3)
+
+    complete_expense_button = Button(add_window, width=20, text="Complete expense", command=lambda: calculate_all())
+    complete_expense_button.grid(padx=20, pady=20, column=1, row=4)
+
+    expense_window.mainloop()
+
+
 def open_expense_window():
     main_window.destroy()
     expense_window = Tk()
@@ -74,7 +146,7 @@ def open_expense_window():
     expense_type_entry.grid(row=0, column=1, padx=20, pady=20)
 
     submit_type_button = Button(expense_window, width=20, text="Submit",
-                                command=lambda: initiate_expense_calculation(expense_type_entry.get()))
+                                command=lambda: open_expense_initiation_window(expense_window))
     submit_type_button.grid(padx=20, pady=20, column=1, row=2)
 
     expense_window.mainloop()
@@ -84,91 +156,17 @@ def open_total_window():
     pass
 
 
-# ---------------------------- CONSTANTS ------------------------------- #
-PINK = "#e2979c"
-RED = "#e7305b"
-GREEN = "#9bdeac"
-BLUE = "#164694"
-YELLOW = "#ffffaa"
-FONT_NAME = "Courier"
-CHECKMARK = "🗹"
-
 # ---------------------------- UI SETUP ------------------------------- #
+if __name__ == "__main__":
+    # Launcher main_window and elements in App
+    main_window = Tk()
+    main_window.title("NP's Expense Tracker")
+    main_window.config(padx=100, pady=50, bg=BLUE)
+    expense_or_total_label = Label(text="Expense or Total ")
+    expense_or_total_label.grid(padx=20, pady=20, column=0, row=1)
+    user_entry = Entry(width=30)
+    user_entry.grid(padx=20, pady=20, column=1, row=1)
+    submit_button = Button(width=20, text="Submit", command=lambda: get_user_action())
+    submit_button.grid(padx=20, pady=20, column=1, row=2)
 
-
-main_window = Tk()
-main_window.title("NP's Expense Tracker")
-main_window.config(padx=100, pady=50, bg=BLUE)
-
-PASSWORD_FILE = "data.json"
-DATA_FILE = "data2.json"
-
-
-# ---------------------------- SEARCH PASSWORD ------------------------------- #
-def verify_entries(web, mail, passcode):
-    process_site = True
-    website_regex = re.compile(r'[A-Za-z\d]{4,}')
-    email_regex = re.compile(r'([A-Za-z\d]+[.-_])*[A-Za-z\d]+@[A-Za-z\d-]+(\.[A-Z|a-z]{2,})+')
-    if not re.fullmatch(email_regex, mail):
-        messagebox.showinfo(title="Email not valid", message="Verify the Email details")
-        process_site = False
-    if not re.fullmatch(website_regex, web):
-        messagebox.showinfo(title="Website not valid", message="Verify the Website name")
-        process_site = False
-    if len(passcode) < 6:
-        messagebox.showinfo(title="Password Criteria", message="Password should be more than 6 characters")
-        process_site = False
-
-    return process_site
-
-
-# ---------------------------- SEARCH PASSWORD ------------------------------- #
-def save_password2():
-    website = web_entry.get()
-    email = email_entry.get()
-    password = password_entry.get()
-    process_site = verify_entries(website, email, password)
-    if process_site:
-        is_ok = messagebox.askokcancel(title=website, message=f"Verify entered details \nEmail: {email}\n"
-                                                              f"Password: {password}\n\nIs it okay to save?\n")
-        if is_ok:
-            web_entry.delete(0, END)
-            password_entry.delete(0, END)
-            new_web_data = {
-                website: {
-                    "Email": email,
-                    "Password": password
-                }
-            }
-            # print(new_web_data)
-            try:
-                with open(DATA_FILE, mode='r') as data_file:
-                    data = json.load(data_file)
-                    data.update(new_web_data)
-            except FileNotFoundError:
-                with open(DATA_FILE, mode='w') as data_file:
-                    json.dump(new_web_data, data_file, indent=4)
-            else:
-                with open(DATA_FILE, mode='w') as data_file:
-                    json.dump(data, data_file, indent=4)
-
-
-# ---------------------------- SEARCH PASSWORD ------------------------------- #
-def clear_fields():
-    web_entry.delete(0, END)
-    # email_entry.delete(0, END)
-    password_entry.delete(0, END)
-    web_entry.focus()
-
-
-# ---------------------------- UI SETUP ------------------------------- #
-
-# Launcher main_window and elements in App
-expense_or_total_label = Label(text="Expense or Total?: ")
-expense_or_total_label.grid(padx=20, pady=20, column=0, row=1)
-user_entry = Entry(width=30)
-user_entry.grid(padx=20, pady=20, column=1, row=1)
-submit_button = Button(width=20, text="Submit", command=lambda: get_user_action())
-submit_button.grid(padx=20, pady=20, column=1, row=2)
-
-main_window.mainloop()
+    main_window.mainloop()
