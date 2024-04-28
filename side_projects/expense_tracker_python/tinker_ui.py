@@ -1,8 +1,6 @@
 # Creating a simple expense tracker using Python
 from tkinter import *
 from tkinter import messagebox
-import json
-import re
 import calc_total
 import file_update
 
@@ -67,8 +65,7 @@ def get_user_action():
 
 
 def calculate_all(date_field, tk_window):
-    exp_day = calc_total.get_expense_date(date_field)
-    print(date_field)
+    exp_day = calc_total.get_expense_date(str(date_field.get()))
     total = calc_total.calculate_day_expense(exp_day)
     messagebox.showinfo(title="Total expense for the day",
                         message=f"'Total amount spent on {exp_day} is ''{total}'' Rupees.'")
@@ -93,7 +90,7 @@ def take_expense(expense_date, expense_entry, expense_des_entry):
             "Description": str(expense_des_entry.get())
         }
         exp_day = calc_total.get_expense_date(str(expense_date.get()))
-        expense_date.delete(0, END)
+        # expense_date.delete(0, END)
         expense_entry.delete(0, END)
         expense_des_entry.delete(0, END)
         file_update.add_single_expense(exp_day, expense)
@@ -115,9 +112,6 @@ def open_expense_initiation_window(expense_window):
     expense_date_entry.grid(row=0, column=1, padx=20, pady=20)
     expense_date_entry.focus()
 
-    expense_day = str(expense_date_entry.get())
-    print(f"{expense_day} is here")
-
     expense_amount = Label(add_window, text="Enter expense amount ")
     expense_amount.grid(row=1, column=0, padx=20, pady=20)
 
@@ -136,7 +130,7 @@ def open_expense_initiation_window(expense_window):
     more_expense_button.grid(padx=20, pady=20, column=1, row=3)
 
     complete_expense_button = Button(add_window, width=20, text="Complete expense",
-                                     command=lambda: calculate_all(expense_day, add_window))
+                                     command=lambda: calculate_all(expense_date_entry, add_window))
     complete_expense_button.grid(padx=20, pady=20, column=1, row=4)
 
     expense_window.mainloop()
