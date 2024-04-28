@@ -66,8 +66,13 @@ def get_user_action():
         open_total_window()
 
 
-def calculate_all():
-    pass
+def calculate_all(date_field, tk_window):
+    exp_day = calc_total.get_expense_date(date_field)
+    print(date_field)
+    total = calc_total.calculate_day_expense(exp_day)
+    messagebox.showinfo(title="Total expense for the day",
+                        message=f"'Total amount spent on {exp_day} is ''{total}'' Rupees.'")
+    tk_window.destroy()
 
 
 def take_expense(expense_date, expense_entry, expense_des_entry):
@@ -108,6 +113,10 @@ def open_expense_initiation_window(expense_window):
 
     expense_date_entry = Entry(add_window)
     expense_date_entry.grid(row=0, column=1, padx=20, pady=20)
+    expense_date_entry.focus()
+
+    expense_day = str(expense_date_entry.get())
+    print(f"{expense_day} is here")
 
     expense_amount = Label(add_window, text="Enter expense amount ")
     expense_amount.grid(row=1, column=0, padx=20, pady=20)
@@ -126,7 +135,8 @@ def open_expense_initiation_window(expense_window):
                                                               expense_amount_entry, expense_description_entry))
     more_expense_button.grid(padx=20, pady=20, column=1, row=3)
 
-    complete_expense_button = Button(add_window, width=20, text="Complete expense", command=lambda: calculate_all())
+    complete_expense_button = Button(add_window, width=20, text="Complete expense",
+                                     command=lambda: calculate_all(expense_day, add_window))
     complete_expense_button.grid(padx=20, pady=20, column=1, row=4)
 
     expense_window.mainloop()
@@ -135,7 +145,7 @@ def open_expense_initiation_window(expense_window):
 def open_expense_window():
     main_window.destroy()
     expense_window = Tk()
-    expense_window.title("NP's Expense Tracker")
+    expense_window.title("Nagaraj P's Expense Tracker")
     expense_window.config(padx=100, pady=50, bg=BLUE)
 
     expense_type = Label(expense_window, text="Enter expense type, day or single: ")
@@ -143,6 +153,7 @@ def open_expense_window():
 
     expense_type_entry = Entry(expense_window)
     expense_type_entry.grid(row=0, column=1, padx=20, pady=20)
+    expense_type_entry.focus()
 
     submit_type_button = Button(expense_window, width=20, text="Submit",
                                 command=lambda: open_expense_initiation_window(expense_window))
@@ -155,7 +166,6 @@ def open_total_window():
     pass
 
 
-# ---------------------------- UI SETUP ------------------------------- #
 if __name__ == "__main__":
     # Launcher main_window and elements in App
     main_window = Tk()
@@ -165,6 +175,7 @@ if __name__ == "__main__":
     expense_or_total_label.grid(padx=20, pady=20, column=0, row=1)
     user_entry = Entry(width=30)
     user_entry.grid(padx=20, pady=20, column=1, row=1)
+    user_entry.focus()
     submit_button = Button(width=20, text="Submit", command=lambda: get_user_action())
     submit_button.grid(padx=20, pady=20, column=1, row=2)
 
