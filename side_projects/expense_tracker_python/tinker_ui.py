@@ -1,6 +1,7 @@
 # Creating a simple expense tracker using Python
 from tkinter import *
 from tkinter import messagebox
+from tkinter.simpledialog import askstring
 import calc_total
 import file_update
 
@@ -27,33 +28,28 @@ def initiate_expense_calculation(expense_type):
         print("Your choice is not valid or unavailable here")
 
 
-def initiate_total_calculation():
-    user_notification = """    Enter 'all' to calculate all expense added till date,
-        Enter 'day' or 'd' to calculate single day expense,
-        Enter 'month' or 'm' to calculate single month expense,
-        Enter 'week' or 'w' to calculate last week expense,
-        Enter 'last' or 'l' to calculate last few days expense,
-        Enter 'dates' or 'dt' to calculate expense between two dates
-        """
-    unique_day_or_all = input("Specific date expense or month, week or last few days or total expense till date"
-                              ": (all / day / month / week / last): ")
+def initiate_total_calculation(total_variation):
+    unique_day_or_all = str(total_variation)
     if unique_day_or_all == "all":
-        calc_total.calculate_total_amount()
+        output = calc_total.calculate_total_amount()
     elif unique_day_or_all == "d" or unique_day_or_all == "day":
-        day_to_calculate = calc_total.get_expense_date(input("Enter which day you wants to calculate: "))
-        calc_total.calculate_day_expense(day_to_calculate)
+        day_to_calculate = calc_total.get_expense_date(askstring('Day', 'Enter which day to calculate'))
+        output = calc_total.calculate_day_expense(day_to_calculate)
     elif unique_day_or_all == "m" or unique_day_or_all == "month":
-        month_to_calculate = input("Enter which month you wants to calculate: ")
+        month_to_calculate = askstring('Month', 'Enter which month to calculate')
         if month_to_calculate in calc_total.months_dict1:
-            calc_total.calculate_month_expense(month_to_calculate)
+            output = calc_total.calculate_month_expense(month_to_calculate)
         else:
-            calc_total.calculate_month_expense(calc_total.months_dict[month_to_calculate.title()])
+            output = calc_total.calculate_month_expense(calc_total.months_dict[month_to_calculate.title()])
     elif unique_day_or_all == "w" or unique_day_or_all == "week":
-        calc_total.calculate_last_n_days_expense(7)
+        output = calc_total.calculate_last_n_days_expense(7)
     elif unique_day_or_all == "l" or unique_day_or_all == "last":
-        calc_total.calculate_last_n_days_expense(int(input("Enter number of days wants to calculate: ")))
+        output = calc_total.calculate_last_n_days_expense(int(askstring('Number of days', 'Enter number of days to calculate')))
     else:
-        print("Your choice is not valid or unavailable here.")
+        output = "Your choice is not valid or unavailable here."
+
+    messagebox.showinfo(title="Total expense Calculated",
+                        message=output)
 
 
 def get_user_action():
@@ -157,7 +153,31 @@ def open_expense_window():
 
 
 def open_total_window():
-    pass
+    user_notification = """Enter 'all' to calculate all expense added till date,
+        Enter 'day' or 'd' to calculate single day expense,
+        Enter 'month' or 'm' to calculate single month expense,
+        Enter 'week' or 'w' to calculate last week expense,
+        Enter 'last' or 'l' to calculate last few days expense,
+        Enter 'dates' or 'dt' to calculate expense between two dates
+        """
+    messagebox.showinfo(title="Choose your choice accordingly", message=user_notification)
+    main_window.destroy()
+    total_window = Tk()
+    total_window.title("Nagaraj P's Expense Tracker")
+    total_window.config(padx=100, pady=50, bg=BLUE)
+
+    total_type = Label(total_window, text="Enter total type ")
+    total_type.grid(row=0, column=0, padx=20, pady=20)
+
+    total_type_entry = Entry(total_window)
+    total_type_entry.grid(row=0, column=1, padx=20, pady=20)
+    total_type_entry.focus()
+
+    submit_type_button = Button(total_window, width=20, text="Submit",
+                                command=lambda: initiate_total_calculation(total_type_entry.get()))
+    submit_type_button.grid(padx=20, pady=20, column=1, row=2)
+
+    total_window.mainloop()
 
 
 if __name__ == "__main__":
