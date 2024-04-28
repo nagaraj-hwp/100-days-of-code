@@ -14,7 +14,7 @@ def add_single_expense(date, new_expense):
 
 
 def update_expense_file(payment_date, expense_list):
-    print("payment_date is", payment_date)
+    # print("payment_date is", payment_date)
     # print("expense list before feeds", expense_list)
     my_day_expense = {payment_date: expense_list}
     a = []
@@ -62,10 +62,10 @@ def get_expense_date(expense_day):
         # date_match = re.search('((\\d{4})-(\\d{2})-(\\d{2}))', expense_day)
         # expense_date = date_match[0]
         day_to_date = expense_day
-    print(f"\nAdding expense for date: {day_to_date}\n")
+    # print(f"\nAdding expense for date: {day_to_date}\n")
     return day_to_date
 
 
 def update_back_up_file():
     shutil.copyfile('../../ignore_dir/expense_log_test.json', '../../ignore_dir/expense_log_test_bkp.json')
-    print("Updated backup file.")
+    # print("Updated backup file.")

@@ -95,7 +95,6 @@ def take_expense(expense_date, expense_entry, expense_des_entry):
     else:
         messagebox.showinfo(title="Error occurred",
                             message="Verify the input fields")
-        process = False
 
 
 def open_expense_initiation_window(expense_window):
