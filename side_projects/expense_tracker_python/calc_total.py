@@ -68,7 +68,8 @@ def calculate_between_dates(start_dt, end_dt):
             if key in days_to_calculate:
                 for value in values:
                     total_spent += value["Amount"]
-    print(f"Total amount spent on this particular {no_of_days + 1} days is '{total_spent}' Rupees.")
+    # print(f"Total amount spent on this particular {no_of_days + 1} days is '{total_spent}' Rupees.")
+    return f"Total amount spent on this particular {no_of_days + 1} days is '{total_spent}' Rupees."
 
 
 def calculate_month_expense(month):
@@ -81,7 +82,7 @@ def calculate_month_expense(month):
             if match is not None:
                 for value in values:
                     total_spent += value["Amount"]
-    print(f"'Total amount spent on month {months_dict1[month]} is {total_spent} Rupees.'")
+    return f"'Total amount spent on month {months_dict1[month]} is {total_spent} Rupees.'"
 
 
 def calculate_last_n_days_expense(number_of_days=1):
@@ -94,7 +95,7 @@ def calculate_last_n_days_expense(number_of_days=1):
             if key in last_days_to_calculate:
                 for value in values:
                     total_spent += value["Amount"]
-    print(f"Total amount spent on last {number_of_days} days is '{total_spent}' Rupees.")
+    return  f"Total amount spent on last {number_of_days} days is '{total_spent}' Rupees."
 
 
 def calculate_day_expense(day_to_calc):
@@ -108,7 +109,7 @@ def calculate_day_expense(day_to_calc):
         else:
             print(f"No such day exist as {day_to_calc}, check your day.\n")
     # print(f"'Total amount spent on {day_to_calc} is ''{total_spent}'' Rupees.'")
-    return total_spent
+    return f"'Total amount spent on {day_to_calc} is ''{total_spent}'' Rupees.'"
 
 
 def calculate_total_amount():
@@ -118,4 +119,4 @@ def calculate_total_amount():
         for key, values in expense_data.items():
             for value in values:
                 total_spent += value["Amount"]
-    print(f"'Total amount spent as per record is {total_spent} Rupees.'")
+    return f"'Total amount spent as per record is {total_spent} Rupees.'"
