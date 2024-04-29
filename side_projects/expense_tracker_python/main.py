@@ -37,7 +37,7 @@ def initiate_total_calculation():
         day_to_calculate = calc_total.get_expense_date(input("Enter which day you wants to calculate: "))
         calc_total.calculate_day_expense(day_to_calculate)
     elif unique_day_or_all == "m" or unique_day_or_all == "month":
-        month_to_calculate = input("Enter which month you wants to calculate: ")
+        month_to_calculate = input("Enter which month expense you wants to calculate: ")
         if month_to_calculate in calc_total.months_dict1:
             calc_total.calculate_month_expense(month_to_calculate)
         else:
