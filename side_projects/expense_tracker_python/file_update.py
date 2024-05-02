@@ -15,7 +15,7 @@ def add_single_expense(date, new_expense):
 
 def update_expense_file(payment_date, expense_list):
     # print("payment_date is", payment_date)
-    # print("expense list before feeds", expense_list)
+    # print("expense list before feeds been read", expense_list)
     my_day_expense = {payment_date: expense_list}
     a = []
     if not os.path.isfile(WRITEFILE):
