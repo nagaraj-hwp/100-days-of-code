@@ -4,6 +4,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 
 # Can keep an empty json file
 WRITEFILE = "../../ignore_dir/expenses_t_file.json"
@@ -155,6 +156,15 @@ def update_back_up_file():
     print("Updated backup file.")
 
 
+def update_expense_data_in_git():
+    print("**************************************")
+    commit_message = input("Enter Commit message: ")
+    data_files_repo = "../../../private_data_files"
+    os.chdir(data_files_repo)
+    subprocess.run(["git", "commit", "-a", "-m", commit_message])
+    subprocess.run(["git", "push", "origin", "master"])
+
+
 def initiate_calculation():
     expense_type = input("Enter expense type, whether day or single expense or total: ")
     if expense_type == "d" or expense_type == "day":
@@ -188,5 +198,5 @@ def initiate_calculation():
 
 
 initiate_calculation()
-
+update_expense_data_in_git()
 # update_back_up_file()
