@@ -1,4 +1,5 @@
 # Creating a simple expense tracker using Python
+import datetime
 from tkinter import *
 from tkinter import messagebox
 from tkinter.simpledialog import askstring
@@ -61,10 +62,12 @@ def get_user_action():
 
 
 def calculate_all(date_field, tk_window):
+
     exp_day = calc_total.get_expense_date(str(date_field.get()))
     total = calc_total.calculate_day_expense(exp_day)
+    file_update.update_expense_data_in_git(f"Updated on date {datetime.datetime.today()}")
     messagebox.showinfo(title="Total expense for the day",
-                        message=f"'Total amount spent on {exp_day} is ''{total}'' Rupees.'")
+                        message=total)
     tk_window.destroy()
 
 
