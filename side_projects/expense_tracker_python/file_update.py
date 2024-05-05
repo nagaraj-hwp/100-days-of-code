@@ -4,6 +4,7 @@ import json
 import os
 # import re
 import shutil
+import subprocess
 
 # Can keep an empty json file
 WRITEFILE = "../../ignore_dir/expense_log_test.json"
@@ -69,3 +70,12 @@ def get_expense_date(expense_day):
 def update_back_up_file():
     shutil.copyfile('../../ignore_dir/expense_log_test.json', '../../ignore_dir/expense_log_test_bkp.json')
     # print("Updated backup file.")
+
+
+def update_expense_data_in_git(commit_message):
+    # print("**************************************")
+    # commit_message = input("Enter Commit message: ")
+    data_files_repo = "../../../private_data_files"
+    os.chdir(data_files_repo)
+    subprocess.run(["git", "commit", "-a", "-m", commit_message])
+    subprocess.run(["git", "push", "origin", "master"])
