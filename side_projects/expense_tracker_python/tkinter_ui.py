@@ -9,6 +9,7 @@ import file_update
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
+CYAN = "#12effd"
 RED = "#e7305b"
 GREEN = "#9bdeac"
 BLUE = "#164694"
