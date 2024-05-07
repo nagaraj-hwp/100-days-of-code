@@ -18,7 +18,7 @@ def initiate_expense_calculation():
         file_update.add_single_expense(expense_date)
         file_update.update_back_up_file()
     else:
-        print("Your choice is not valid or unavailable here")
+        print("Your choice is invalid or unavailable here")
 
 
 def initiate_total_calculation():
