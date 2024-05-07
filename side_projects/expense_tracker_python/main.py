@@ -13,7 +13,7 @@ def initiate_expense_calculation():
         file_update.update_back_up_file()
         calc_total.calculate_day_expense(expense_date)
     elif expense_type == "single" or expense_type == "s":
-        input_day = input("Enter which day it should be added to(careful with your expense date input): ")
+        input_day = input("Enter which day this expense belongs to(careful with your expense date input): ")
         expense_date = calc_total.get_expense_date(input_day)
         file_update.add_single_expense(expense_date)
         file_update.update_back_up_file()
