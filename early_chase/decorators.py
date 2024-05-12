@@ -24,7 +24,7 @@ def decorator_function(function):
 
 
 @decorator_function
-def say_hi(name="Nagaraj"):
+def say_hi(name="Nagaraj Palpandi"):
     return name
 
 
