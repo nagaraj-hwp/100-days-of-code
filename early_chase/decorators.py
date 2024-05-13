@@ -18,7 +18,7 @@ def decorator_function(function):
     def wrapper_function():
         print("wrapper function call")
         result = function()
-        print("result: ", result)
+        print("resulted string: ", result)
 
     return wrapper_function
 
