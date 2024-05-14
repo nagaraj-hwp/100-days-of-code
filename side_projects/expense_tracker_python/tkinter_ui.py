@@ -5,6 +5,7 @@ from tkinter import messagebox
 from tkinter.simpledialog import askstring
 import calc_total
 import file_update
+import os
 
 
 # ---------------------------- CONSTANTS ------------------------------- #
