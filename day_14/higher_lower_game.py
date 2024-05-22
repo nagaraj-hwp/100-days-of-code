@@ -10,7 +10,7 @@ repetition = []
 user_points = 0
 system('cls')
 print(logo)
-print("Welcome to higher lower!\nLet's examine your intelligence and prediction skills together !!!")
+print("Welcome to higher lower!\nLet's examine your intelligence and prediction skills together!!!")
 defend = random.choice(data)
 # print(defend)
 repetition.append(defend)
