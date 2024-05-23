@@ -1,4 +1,4 @@
-# turtle race code started
+# turtle race code using tutle module started
 
 from turtle import Turtle, Screen
 import random
