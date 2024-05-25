@@ -13,7 +13,7 @@ class MoneyMachine:
         self.money_received = 0
 
     def report(self):
-        """Prints the current profit"""
+        """Prints the current profit."""
         print(f"Money: {self.CURRENCY}{self.profit}")
 
     def process_coins(self):
@@ -33,7 +33,7 @@ class MoneyMachine:
             self.money_received = 0
             return True
         else:
-            print("Sorry that's not enough money. Money refunded.")
+            print("Sorry that's not enough money:( Money refunded.")
             self.money_received = 0
             return False
 
