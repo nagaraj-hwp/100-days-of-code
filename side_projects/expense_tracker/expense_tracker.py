@@ -197,6 +197,7 @@ def initiate_calculation():
             calculate_week_expense()
 
 
-initiate_calculation()
-update_expense_data_in_git()
-# update_back_up_file()
+if __name__ == "__main__":
+    initiate_calculation()
+    update_expense_data_in_git()
+    # update_back_up_file()
