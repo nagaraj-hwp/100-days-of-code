@@ -24,7 +24,7 @@ def guess_number(attempts, number):
             print("Too Low.\nGuess Again.")
         else:
             print(win)
-            print(f"You guessed it right!!!, the number is {number}.\n")
+            print(f"Yay! You guessed it right!!!, the number is {number}.\n")
             return
         attempts -= 1
     if attempts == 0:
