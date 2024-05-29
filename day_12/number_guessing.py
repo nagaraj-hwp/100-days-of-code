@@ -19,9 +19,9 @@ def guess_number(attempts, number):
         print(f"You still have {attempts} attempts left to guess this number.")
         predict = int(input("Make a guess.\n"))
         if predict > number:
-            print("Too High.\nGuess Again.")
+            print("Too High.\nGuess again.")
         elif predict < number:
-            print("Too Low.\nGuess Again.")
+            print("Too Low.\nGuess again.")
         else:
             print(win)
             print(f"Yay! You guessed it right!!!, the number is {number}.\n")
