@@ -174,11 +174,13 @@ def initiate_calculation():
         add_multiple_expense(expense_date)
         update_back_up_file()
         calculate_day_expense(expense_date)
+        update_expense_data_in_git()
     elif expense_type == "single" or expense_type == "s":
         input_day = input("Enter which day it should be added to(careful with your expense date input): ")
         expense_date = get_expense_date(input_day)
         add_single_expense(expense_date)
         update_back_up_file()
+        update_expense_data_in_git()
     elif expense_type == "total" or expense_type == "t":
         unique_day_or_all = input("Wanna calculate total expense till now or specific date or month"
                                   " or week: (all or one): ")
@@ -199,5 +201,5 @@ def initiate_calculation():
 
 if __name__ == "__main__":
     initiate_calculation()
-    update_expense_data_in_git()
+    # update_expense_data_in_git()
     # update_back_up_file()
