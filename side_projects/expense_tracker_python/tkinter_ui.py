@@ -1,4 +1,15 @@
+"""
+__author__ = "Nagaraj Palpandi"
+__copyright__ = "Copyright 2007, The NP's Project"
+__credits__ = ["Nagaraj P"]
+__license__ = "GPL"
+__version__ = "1.0.1"
+__maintainer__ = "Nagaraj P"
+__email__ = "nagarajpaul646@gmail.com"
+__status__ = "Testing"
+"""
 # Creating a simple expense tracker using Python
+
 import datetime
 from tkinter import *
 from tkinter import messagebox
