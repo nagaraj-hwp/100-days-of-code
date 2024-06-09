@@ -111,17 +111,29 @@ def calculate_month_expense(month):
     print(f"'Total amount spent on month {months_dict1[month]} is {total_spent} Rupees.'")
 
 
-def calculate_week_expense():
+# def calculate_week_expense():
+#     today = dt.date.today()
+#     week_days = [str(today - dt.timedelta(days=i)) for i in range(0, 7)]
+#     with open(WRITEFILE) as feeds_json:
+#         feeds = json.load(feeds_json)
+#         total_spent = 0
+#         for key, values in feeds.items():
+#             if key in week_days:
+#                 for value in values:
+#                     total_spent += value["Amount"]
+#     print(f"'Total amount spent last week is {total_spent} Rupees.'")
+
+def calculate_last_n_days_expense(number_of_days=7):
     today = dt.date.today()
-    week_days = [str(today - dt.timedelta(days=i)) for i in range(0, 7)]
+    last_days_to_calculate = [str(today - dt.timedelta(days=i)) for i in range(0, number_of_days)]
     with open(WRITEFILE) as feeds_json:
         feeds = json.load(feeds_json)
         total_spent = 0
         for key, values in feeds.items():
-            if key in week_days:
+            if key in last_days_to_calculate:
                 for value in values:
                     total_spent += value["Amount"]
-    print(f"'Total amount spent last week is {total_spent} Rupees.'")
+    print(f"Total amount spent on last {number_of_days} days is '{total_spent}' Rupees.")
 
 
 def calculate_day_expense(day_to_calc):
@@ -196,7 +208,9 @@ def initiate_calculation():
             else:
                 calculate_month_expense(months_dict[month_to_calculate.title()])
         elif unique_day_or_all == "w" or unique_day_or_all == "week":
-            calculate_week_expense()
+            calculate_last_n_days_expense()
+        elif unique_day_or_all == "some":
+            calculate_last_n_days_expense(int(input("Enter number of days: ")))
 
 
 if __name__ == "__main__":

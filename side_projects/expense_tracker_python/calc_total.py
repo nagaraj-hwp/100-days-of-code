@@ -95,7 +95,7 @@ def calculate_last_n_days_expense(number_of_days=1):
             if key in last_days_to_calculate:
                 for value in values:
                     total_spent += value["Amount"]
-    return  f"Total amount spent on last {number_of_days} days is '{total_spent}' Rupees."
+    return f"Total amount spent on last {number_of_days} days is '{total_spent}' Rupees."
 
 
 def calculate_day_expense(day_to_calc):
