@@ -69,6 +69,8 @@ def get_expense_date(expense_day):
 
 
 def update_back_up_file():
+    # This update is made to log test as still in testing phase.
+    # Kindly consider moving this to actual file in production.
     shutil.copyfile('../../ignore_dir/expense_log_test.json', '../../ignore_dir/expense_log_test_bkp.json')
     # print("Updated backup file.")
 
