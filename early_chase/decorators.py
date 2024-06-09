@@ -3,10 +3,10 @@ import time
 
 
 def outer():
-    print("Outer function call")
+    print("Outer function call.")
 
     def inner():
-        print("Inner function call")
+        print("Inner function call.")
 
     inner()
 

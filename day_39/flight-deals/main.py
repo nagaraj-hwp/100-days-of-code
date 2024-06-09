@@ -20,7 +20,7 @@ ORIGIN_CITY_IATA = "MAA"
 if sheet_data[0]["iataCode"] == "":
     for row in sheet_data:
         row["iataCode"] = flight_search.get_destination_code(row["city"])
-    print(f"sheet_data:\n {sheet_data}")
+    print(f"sheet_data:\n  {sheet_data}")
 
     data_manager.destination_data = sheet_data
     data_manager.update_destination_codes()
