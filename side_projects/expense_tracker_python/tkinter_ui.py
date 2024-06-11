@@ -8,7 +8,7 @@ __maintainer__ = "Nagaraj P"
 __email__ = "nagarajpaul646@gmail.com"
 __status__ = "Testing"
 """
-# Creating a simple expense tracker using Python
+# Creating a simple expense tracker using Python3
 
 import datetime
 from tkinter import *
