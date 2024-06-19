@@ -41,7 +41,7 @@ months_dict = {
 
 
 def add_single_expense(date):
-    new_expense = {"Amount": int(input("Enter amount you have spent Rs ₹: ")),
+    new_expense = {"Amount": int(input("Enter amount spent Rs ₹: ")),
                    "Description": input("Enter what you spent for: Eg: Food")}
     update_expense_file(date, [new_expense])
 
