@@ -1,6 +1,6 @@
 """
 __author__ = "Nagaraj Palpandi"
-__copyright__ = "Copyright 2007, The NP's Project"
+__copyright__ = "Copyright 2007, The NP's expense tracker project"
 __credits__ = ["Nagaraj P"]
 __license__ = "GPL"
 __version__ = "1.0.1"
