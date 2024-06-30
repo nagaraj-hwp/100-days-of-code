@@ -215,6 +215,6 @@ def initiate_calculation():
 
 
 if __name__ == "__main__":
-    initiate_calculation()
-    # update_back_up_file()
-    # update_expense_data_in_git()
+    # initiate_calculation()
+    update_back_up_file()
+    update_expense_data_in_git()
