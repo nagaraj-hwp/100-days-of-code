@@ -52,6 +52,25 @@ def get_expense_date(expense_day):
     return day_to_date
 
 
+def total_food_expense(month):
+    food_words_list = ["sambar", "curd", "briyani", "biryani", "dosa", "breakfast", "lunch", "dinner", "chicken",
+                       "groceries", "rice", "coconut", "banana", "halwa", "water", "mutton", "maavu", "egg"]
+    month_pattern = rf'(\d{{4}})-{month}-(0[1-9]|[1-2][0-9]|3[0-1])'
+    with open(WRITEFILE) as feeds_json:
+        feeds = json.load(feeds_json)
+        total_spent = 0
+        for key, values in feeds.items():
+            match = re.match(month_pattern, key)
+            if match is not None:
+                for value in values:
+                    for item in food_words_list:
+                        if item in value["Description"].lower():
+                            print(f'{key} Matched description {value["Description"]}')
+                            total_spent += value["Amount"]
+                            break
+    return f"'Total amount spent on month {months_dict1[month]} for food is {total_spent} Rupees.'"
+
+
 def calculate_between_dates(start_dt, end_dt):
     start_date = dt.datetime.strptime(start_dt, "%Y-%m-%d")
     end_date = dt.datetime.strptime(end_dt, "%Y-%m-%d")
@@ -120,3 +139,8 @@ def calculate_total_amount():
             for value in values:
                 total_spent += value["Amount"]
     return f"'Total amount spent as per record is {total_spent} Rupees.'"
+
+
+if __name__ == "__main__":
+    print(total_food_expense(input("Enter Month to calculate: ")))
+    # print(calculate_month_expense(input("Enter Month to calculate: ")))
