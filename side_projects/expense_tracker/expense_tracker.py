@@ -176,6 +176,8 @@ def update_expense_data_in_git():
     os.chdir(data_files_repo)
     subprocess.run(["git", "commit", "-a", "-m", commit_message])
     subprocess.run(["git", "push", "origin", "master"])
+    print("Git update completed successfully")
+    print("**************************************")
 
 
 def initiate_calculation():
@@ -216,5 +218,5 @@ def initiate_calculation():
 
 if __name__ == "__main__":
     # initiate_calculation()
-    update_back_up_file()
+    # update_back_up_file()
     update_expense_data_in_git()
