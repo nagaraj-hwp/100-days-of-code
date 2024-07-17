@@ -7,7 +7,7 @@ def initiate_expense_calculation():
     expense_type = input("Enter expense type, whether a complete day expenses or single expense: ")
     if expense_type == "d" or expense_type == "day":
         input_day = input("Enter date  of the expense(YYYY−MM−DD) or just 'today' or 'td' or 'yesterday' or 'y'"
-                          "(careful with your expense date input): ")
+                          "(careful with your expense date input format): ")
         expense_date = calc_total.get_expense_date(input_day)
         file_update.add_multiple_expense(expense_date)
         file_update.update_back_up_file()
