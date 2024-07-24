@@ -1,4 +1,4 @@
-MENU = {
+ko nu ji nu nu ji nuMENU = {
     "espresso": {
         "ingredients": {
             "water": 50,
@@ -42,7 +42,7 @@ def is_resource_sufficient(order_ingredients):
 
 
 def process_coins():
-    """Returns the total calculated from coins inserted."""
+    """Returns the total calculated from coins inserted as input."""
     print("Please insert coins.")
     total = int(input("how many quarters?: ")) * 0.25
     total += int(input("how many dimes?: ")) * 0.1
